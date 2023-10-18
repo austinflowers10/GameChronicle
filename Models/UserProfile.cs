@@ -16,6 +16,7 @@ public class UserProfile
     public string UserName { get; set; }
     [NotMapped]
     public List<string> Roles { get; set; }
+    public DateTime CreateDateTime {get;set;}
 
     public string IdentityUserId { get; set; }
 
