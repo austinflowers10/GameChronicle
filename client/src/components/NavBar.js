@@ -27,7 +27,14 @@ return (
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
+            <Nav navbar>
+                <NavItem onClick={() => setOpen(false)}>
+                    <NavLink tag={RRNavLink} to="/addgames">
+                        Add Games
+                    </NavLink>
+                </NavItem>
+            </Nav>
+            
             </Collapse>
             <Button
             color="primary"

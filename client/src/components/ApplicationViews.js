@@ -3,6 +3,8 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./home/Home";
+import { AddGames } from "./addGames/AddGames.js";
+
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -21,6 +23,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
                 <Home loggedInUser={loggedInUser}/>
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="addgames"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+                <AddGames/>
             </AuthorizedRoute>
           }
         />
