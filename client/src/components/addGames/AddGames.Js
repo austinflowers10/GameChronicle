@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
-import { getGameResultsObject, getGames } from "../managers/gameManager"
-import "./Home.css"
 
-export const Home = () => {
+import { useEffect, useState } from "react"
+import { getGames } from "../../managers/gameManager"
+
+export const AddGames = ({loggedInUser}) => {
     const [games, setGames] = useState()
 
     useEffect(() => {

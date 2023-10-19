@@ -52,8 +52,8 @@ public class GameChronicleDbContext : IdentityDbContext<IdentityUser>
 
         modelBuilder.Entity<TimeCategory>().HasData(new TimeCategory[]
         {
-            new () {Id = 1, Name = "Now"},
-            new () {Id = 2, Name = "Soon"},
+            new () {Id = 1, Name = "In Progress"},
+            new () {Id = 2, Name = "Up Next"},
             new () {Id = 3, Name = "Later"},
             new () {Id = 4, Name = "Eventually"},
             new () {Id = 5, Name = "Done"},
@@ -73,9 +73,9 @@ public class GameChronicleDbContext : IdentityDbContext<IdentityUser>
             new () {Id = 10, UserProfileId = 1, GameNumber = 3556, ReplayabilityRating = 7, FavoriteRanking = 10, TimeCategoryId = 5}, 
             new () {Id = 11, UserProfileId = 1, GameNumber = 579507, DateStarted = new DateTime(2023, 10, 01), TimeCategoryId = 1}, 
             new () {Id = 12, UserProfileId = 1, GameNumber = 2454, DateStarted = new DateTime(2023, 09, 20), TimeCategoryId = 1}, 
-            new () {Id = 13, UserProfileId = 1, GameNumber = 58861, DateStarted = new DateTime(2023, 07, 15), DateFinished = new DateTime(2023, 09, 10), TimeCategoryId = 1}, 
-            new () {Id = 14, UserProfileId = 1, GameNumber = 452635, DateStarted = new DateTime(2023, 09, 11), DateFinished = new DateTime(2023, 09, 30), TimeCategoryId = 1}, 
-            new () {Id = 15, UserProfileId = 1, GameNumber = 368952, DateStarted = new DateTime(2023, 08, 11), DateFinished = new DateTime(2023, 09, 30), TimeCategoryId = 1}, 
+            new () {Id = 13, UserProfileId = 1, GameNumber = 58861, DateStarted = new DateTime(2023, 07, 15), DateFinished = new DateTime(2023, 09, 10), TimeCategoryId = 5}, 
+            new () {Id = 14, UserProfileId = 1, GameNumber = 452635, DateStarted = new DateTime(2023, 09, 11), DateFinished = new DateTime(2023, 09, 30), TimeCategoryId = 5}, 
+            new () {Id = 15, UserProfileId = 1, GameNumber = 368952, DateStarted = new DateTime(2023, 08, 11), DateFinished = new DateTime(2023, 09, 30), TimeCategoryId = 5}, 
             new () {Id = 16, UserProfileId = 1, GameNumber = 892902, TimeCategoryId = 3}, 
             new () {Id = 17, UserProfileId = 1, GameNumber = 605674, TimeCategoryId = 3}, 
             new () {Id = 18, UserProfileId = 1, GameNumber = 840776, TimeCategoryId = 3}, 
@@ -91,7 +91,15 @@ public class GameChronicleDbContext : IdentityDbContext<IdentityUser>
             new () {Id = 28, UserProfileId = 1, GameNumber = 638650, DateStarted = new DateTime(2022, 10, 15), DateFinished = new DateTime(2022, 12, 20), TimeCategoryId = 5}, 
             new () {Id = 29, UserProfileId = 1, GameNumber = 28154, DateStarted = new DateTime(2022, 10, 15), DateFinished = new DateTime(2022, 12, 20), FavoriteRanking = 11, TimeCategoryId = 5}, 
             new () {Id = 30, UserProfileId = 1, GameNumber = 19590, DateStarted = new DateTime(2023, 02, 09), DateFinished = new DateTime(2022, 04, 12), TimeCategoryId = 5}, 
-            new () {Id = 31, UserProfileId = 1, GameNumber = 28199, DateStarted = new DateTime(2023, 04, 13), DateFinished = new DateTime(2022, 06, 09), TimeCategoryId = 5} 
+            new () {Id = 31, UserProfileId = 1, GameNumber = 28199, DateStarted = new DateTime(2023, 04, 13), DateFinished = new DateTime(2022, 06, 09), TimeCategoryId = 5},
+            new () {Id = 32, UserProfileId = 1, GameNumber = 58773, TimeCategoryId = 2},
+            new () {Id = 33, UserProfileId = 1, GameNumber = 564757, TimeCategoryId = 2},
+            new () {Id = 34, UserProfileId = 1, GameNumber = 846303, TimeCategoryId = 2},
+            new () {Id = 35, UserProfileId = 1, GameNumber = 650621, TimeCategoryId = 2},
+            new () {Id = 36, UserProfileId = 1, GameNumber = 793647, TimeCategoryId = 2},
+            new () {Id = 37, UserProfileId = 1, GameNumber = 9767, TimeCategoryId = 2},
+            new () {Id = 38, UserProfileId = 1, GameNumber = 22121, TimeCategoryId = 2},
+            new () {Id = 39, UserProfileId = 1, GameNumber = 2093, TimeCategoryId = 2}
         });
     }
 }

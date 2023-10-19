@@ -15,7 +15,7 @@ public class GameController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetGames()
+    public async Task<IActionResult> Get()
     {
         var gameResultsObject = await _apiService.GetGameResultsObject();
         var gamesWithPlatforms = gameResultsObject.Games.Select(game => new
@@ -25,7 +25,7 @@ public class GameController : ControllerBase
             DateReleased = game.DateReleased, 
             Platforms = game.ParentPlatforms.Select(pp => (new { Id = pp.Platform.Id, Name = pp.Platform.Name })).ToList(),
             Genres = game.Genres,
-            ImageURL = game.ImageURL,
+            ImageURL = game.ImageURL
         }).ToList();
 
         return Ok(gamesWithPlatforms);
@@ -37,6 +37,7 @@ public class GameController : ControllerBase
         var foundGame = await _apiService.GetById(id);
         return Ok(foundGame);
     }
+    // This will need to be reworked to return a custom object similar to the first endpoint
 
 
 }
