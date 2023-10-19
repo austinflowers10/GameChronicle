@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { getGames } from "../../managers/gameManager"
+import "./AddGames.css"
 
 export const AddGames = ({loggedInUser}) => {
     const [games, setGames] = useState()
