@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { Home } from "./Home";
+import { Home } from "./home/Home";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -12,7 +12,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <Home />
+                <Home loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />
@@ -20,7 +20,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="playlist"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <Home />
+                <Home loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

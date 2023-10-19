@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GameChronicle.Migrations
 {
     [DbContext(typeof(GameChronicleDbContext))]
-    [Migration("20231018193536_InitialCreate")]
+    [Migration("20231019200410_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,12 +44,12 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Now"
+                            Name = "In Progress"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Soon"
+                            Name = "Up Next"
                         },
                         new
                         {
@@ -241,7 +241,7 @@ namespace GameChronicle.Migrations
                             DateFinished = new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateStarted = new DateTime(2023, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GameNumber = 58861,
-                            TimeCategoryId = 1,
+                            TimeCategoryId = 5,
                             UserProfileId = 1,
                             isCompleted = false
                         },
@@ -251,7 +251,7 @@ namespace GameChronicle.Migrations
                             DateFinished = new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateStarted = new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GameNumber = 452635,
-                            TimeCategoryId = 1,
+                            TimeCategoryId = 5,
                             UserProfileId = 1,
                             isCompleted = false
                         },
@@ -261,7 +261,7 @@ namespace GameChronicle.Migrations
                             DateFinished = new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateStarted = new DateTime(2023, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GameNumber = 368952,
-                            TimeCategoryId = 1,
+                            TimeCategoryId = 5,
                             UserProfileId = 1,
                             isCompleted = false
                         },
@@ -418,6 +418,70 @@ namespace GameChronicle.Migrations
                             TimeCategoryId = 5,
                             UserProfileId = 1,
                             isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 32,
+                            GameNumber = 58773,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 33,
+                            GameNumber = 564757,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 34,
+                            GameNumber = 846303,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 35,
+                            GameNumber = 650621,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 36,
+                            GameNumber = 793647,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 37,
+                            GameNumber = 9767,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 38,
+                            GameNumber = 22121,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
+                        },
+                        new
+                        {
+                            Id = 39,
+                            GameNumber = 2093,
+                            TimeCategoryId = 2,
+                            UserProfileId = 1,
+                            isCompleted = false
                         });
                 });
 
@@ -491,7 +555,7 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "01d4446b-70e4-473c-bdae-e94db2b872bf",
+                            ConcurrencyStamp = "ae1e39f8-755e-4090-973a-91fe6113a6ab",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -590,13 +654,13 @@ namespace GameChronicle.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "229f1ce4-a156-41f6-be3c-69561fa94cb3",
+                            ConcurrencyStamp = "05571474-bc4a-4656-a5dd-aebf9814ac4b",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEPXTSne9B/N3RCXgagmNdq5xQgYGOGAlC0nMcUdeobLeCroxc/pnuyE/JVgbTato3Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF1rI0wW2rsTSklSCAY1yrx8jAPMmUXV1nTG/bxpdNpMWU2XKVsbSKai8gPJHkXWPA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fed9c0a4-dd29-44fc-a2b5-4541d02c09f7",
+                            SecurityStamp = "a1c2007c-e73b-4710-9eb7-fb526f9664bd",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

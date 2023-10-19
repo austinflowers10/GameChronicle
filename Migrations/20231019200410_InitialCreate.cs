@@ -226,20 +226,20 @@ namespace GameChronicle.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "01d4446b-70e4-473c-bdae-e94db2b872bf", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "ae1e39f8-755e-4090-973a-91fe6113a6ab", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "229f1ce4-a156-41f6-be3c-69561fa94cb3", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEPXTSne9B/N3RCXgagmNdq5xQgYGOGAlC0nMcUdeobLeCroxc/pnuyE/JVgbTato3Q==", null, false, "fed9c0a4-dd29-44fc-a2b5-4541d02c09f7", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "05571474-bc4a-4656-a5dd-aebf9814ac4b", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEF1rI0wW2rsTSklSCAY1yrx8jAPMmUXV1nTG/bxpdNpMWU2XKVsbSKai8gPJHkXWPA==", null, false, "a1c2007c-e73b-4710-9eb7-fb526f9664bd", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "TimeCategories",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Now" },
-                    { 2, "Soon" },
+                    { 1, "In Progress" },
+                    { 2, "Up Next" },
                     { 3, "Later" },
                     { 4, "Eventually" },
                     { 5, "Done" }
@@ -272,9 +272,9 @@ namespace GameChronicle.Migrations
                     { 10, null, null, 10, 3556, null, 7, 5, 1, false },
                     { 11, null, new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 579507, null, null, 1, 1, false },
                     { 12, null, new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2454, null, null, 1, 1, false },
-                    { 13, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 58861, null, null, 1, 1, false },
-                    { 14, new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 452635, null, null, 1, 1, false },
-                    { 15, new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 368952, null, null, 1, 1, false },
+                    { 13, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 58861, null, null, 5, 1, false },
+                    { 14, new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 452635, null, null, 5, 1, false },
+                    { 15, new DateTime(2023, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 368952, null, null, 5, 1, false },
                     { 16, null, null, null, 892902, null, null, 3, 1, false },
                     { 17, null, null, null, 605674, null, null, 3, 1, false },
                     { 18, null, null, null, 840776, null, null, 3, 1, false },
@@ -290,7 +290,15 @@ namespace GameChronicle.Migrations
                     { 28, new DateTime(2022, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 638650, null, null, 5, 1, false },
                     { 29, new DateTime(2022, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 11, 28154, null, null, 5, 1, false },
                     { 30, new DateTime(2022, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 19590, null, null, 5, 1, false },
-                    { 31, new DateTime(2022, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 28199, null, null, 5, 1, false }
+                    { 31, new DateTime(2022, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 28199, null, null, 5, 1, false },
+                    { 32, null, null, null, 58773, null, null, 2, 1, false },
+                    { 33, null, null, null, 564757, null, null, 2, 1, false },
+                    { 34, null, null, null, 846303, null, null, 2, 1, false },
+                    { 35, null, null, null, 650621, null, null, 2, 1, false },
+                    { 36, null, null, null, 793647, null, null, 2, 1, false },
+                    { 37, null, null, null, 9767, null, null, 2, 1, false },
+                    { 38, null, null, null, 22121, null, null, 2, 1, false },
+                    { 39, null, null, null, 2093, null, null, 2, 1, false }
                 });
 
             migrationBuilder.CreateIndex(
