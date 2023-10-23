@@ -2,6 +2,7 @@ using GameChronicle.Data;
 using GameChronicle.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -16,7 +17,7 @@ public class UserGameController : ControllerBase
         _apiService = apiService;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}")] //UserProfileId
     public async Task<IActionResult> GetUserGamesPerUser(int id)
     {
         var matchingUserGames = _dbContext.UserGames
@@ -31,4 +32,28 @@ public class UserGameController : ControllerBase
         
         return Ok(matchingUserGames);
     }
+
+    [HttpPut("{id}")]
+    public IActionResult PutUserGame(UserGame userGame, int id)
+    {
+        UserGame foundUserGame = _dbContext.UserGames.SingleOrDefault(ug => ug.Id == id);
+        if (foundUserGame == null)
+        {
+            return NotFound();
+        }
+        else if (userGame.Id != id)
+        {
+            return BadRequest();
+        }
+        foundUserGame.LastKnownPrice = userGame.LastKnownPrice;
+        foundUserGame.DateStarted = userGame.DateStarted;
+        foundUserGame.DateFinished = userGame.DateFinished;
+        foundUserGame.ReplayabilityRating = userGame.ReplayabilityRating; 
+        foundUserGame.FavoriteRanking = userGame.FavoriteRanking;
+        foundUserGame.TimeCategoryId = userGame.TimeCategoryId;
+        foundUserGame.isCompleted = userGame.isCompleted;
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+    
 }
