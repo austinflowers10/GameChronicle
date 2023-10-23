@@ -5,11 +5,14 @@ export const GamesRowByTime = ({userGames, timeCategory}) => {
     {
         gamesPerCategory.length 
         ? <>
-            <h1 className="game-row-header">{timeCategory.name}</h1>
+            <h2 className="game-row-header">{timeCategory.name}</h2>
             <div className="game-row-items">
             {
                 gamesPerCategory.map(game => {
-                    return <div key={game.id} className="game-card">
+                    return <div key={game.id} 
+                            className="game-card"
+                            // style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            >
                         <img className="game-image"src={game.gameSingle.background_image}/>
                         <p className="game-title">{game.gameSingle.name}</p>
                     </div>
