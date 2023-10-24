@@ -1,4 +1,6 @@
-export const GamesRowByTime = ({userGames, timeCategory}) => {
+import { BiChevronUp, BiChevronDown } from "react-icons/bi";
+
+export const GamesRowByTime = ({userGames, timeCategory, updateCategoryOnGame}) => {
     const gamesPerCategory = userGames
         .filter(userGame => userGame.timeCategoryId == timeCategory.id)
         .sort((a, b) => a.gameSingle.name.localeCompare(b.gameSingle.name));
@@ -17,6 +19,20 @@ export const GamesRowByTime = ({userGames, timeCategory}) => {
                             >
                         <img className="game-image"src={game.gameSingle.background_image}/>
                         <p className="game-title">{game.gameSingle.name}</p>
+                        <div className="game-card-options">
+                            {/* History */}
+                            {
+                                timeCategory.id > 1
+                                ? <BiChevronUp onClick={() => {updateCategoryOnGame(game, timeCategory.id - 1)}}/>
+                                : ""
+                            }
+                            {
+                                timeCategory.id < 4
+                                ? <BiChevronDown onClick={() => {updateCategoryOnGame(game, timeCategory.id + 1)}}/>
+                                : ""
+                            }
+                            {/* Details */}
+                        </div>
                     </div>
                 })
             }
