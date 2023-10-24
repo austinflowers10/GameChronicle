@@ -9,16 +9,14 @@ import { Button, Spinner } from "reactstrap";
 
 export const Home = ({loggedInUser}) => {
     const [userGames, setUserGames] = useState()
-    const [savedUserGames, setSavedUserGames] = useState()
     const [timeCategories, setTimeCategories] = useState()
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
 
-    const getSetSaveUserGames = (loggedInUser) => {
+    const getSetUserGames = (loggedInUser) => {
         getUserGamesPerUser(loggedInUser.id).then((res) => {
             setUserGames(res)
-            setSavedUserGames(res)
         })
     }
 
@@ -32,7 +30,7 @@ export const Home = ({loggedInUser}) => {
     }
     
     useEffect(() => {
-        getSetSaveUserGames(loggedInUser)
+        getSetUserGames(loggedInUser)
         getTimeCategories().then(setTimeCategories)
     },[]
     )
@@ -46,15 +44,6 @@ export const Home = ({loggedInUser}) => {
         <div className="header-row">
             <h1 className="home-header">Playlist</h1>
             <BiAddToQueue className="header-icon" onClick={toggle}/> 
-            {
-                userGames !== savedUserGames
-                ? <Button 
-                    onClick={() => {
-                        putUserGames(userGames).then(() => {getSetSaveUserGames(loggedInUser)})
-                    }}
-                >Save Changes</Button>
-                : ""
-            }
             <AddFromHistoryModal 
                 modal={modal} 
                 toggle={toggle} 
@@ -79,3 +68,20 @@ export const Home = ({loggedInUser}) => {
         </div>
     </div>
 }
+ {/* {
+    userGames !== savedUserGames
+    ? <>
+    <Button 
+        onClick={() => {
+            putUserGames(userGames)
+            setSavedUserGames(userGames)
+        }}
+    >Save Changes</Button>
+    <Button 
+        onClick={() => {
+            setUserGames(savedUserGames)
+        }}
+    >Cancel</Button>
+    </>
+    : ""
+    } */}
