@@ -1,4 +1,5 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollapse } from "reactstrap";
+import { putUserGame } from "../../managers/userGameManager";
 
 export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, updateCategoryOnGame}) => {
 
@@ -11,7 +12,14 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
     <ModalHeader toggle={toggle}>Add Game from History</ModalHeader>
         <ModalBody style={{overflow: 'auto'}}>
             {
-                userGames.filter(game => game.timeCategoryId === 5).map(game => {
+                userGames
+                    .filter(game => game.timeCategoryId === 5)
+                    .sort((a, b) => {
+                        if (a.dateFinished === null) return 1;
+                        if (b.dateFinished === null) return -1;
+                        return new Date(b.dateFinished) - new Date(a.dateFinished);
+                      })
+                    .map(game => {
                     // console.log(`${game.id}.)${game.name} - ${game.timeCategoryId}`)
                     
                     return <div key={game.id} id={`toggler--${game.id}`} className="history-game-card">
@@ -26,7 +34,13 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
                                 return timeCategory.id !== 5 &&
                                 <Button key={timeCategory.id} 
                                     className="history-modal-category-button"
-                                    onClick={() => {updateCategoryOnGame(game, timeCategory.id)}}
+                                    onClick={() => {
+                                        updateCategoryOnGame(game, timeCategory.id)
+
+                                        const gameToUpdate = {...game}
+                                        gameToUpdate.timeCategoryId = timeCategory.id
+                                        putUserGame(gameToUpdate)
+                                    }}
                                 >{timeCategory.name}</Button>
                             }) 
                             }
