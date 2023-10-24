@@ -55,5 +55,25 @@ public class UserGameController : ControllerBase
         _dbContext.SaveChanges();
         return NoContent();
     }
+
+    [HttpPut]
+    public IActionResult PutUserGames(List<UserGame> userGames)
+    {
+        foreach (var game in _dbContext.UserGames)
+        {
+            _dbContext.UserGames.Remove(game); // Remove each existing user game
+        }
+
+        foreach (var game in userGames)
+        {
+            game.GameSingle = null; 
+            game.UserProfile = null; 
+            game.TimeCategory = null;
+            _dbContext.UserGames.Add(game); // Add each game from the userGames list
+        }
+
+        _dbContext.SaveChanges(); // Save changes to the database
+        return NoContent(); 
+    }
     
 }
