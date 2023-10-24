@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollapse, Alert } from "reactstrap";
-import { BiAddToQueue } from "react-icons/bi";
-import { getUserGamesPerUser, putUserGame } from "../../managers/userGameManager";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollapse } from "reactstrap";
 
-export const AddFromHistoryModal = ({modal, toggle, userGames, setUserGames, timeCategories, loggedInUser}) => {
+export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, updateCategoryOnGame}) => {
 
     return <>
     <Modal 
@@ -27,15 +24,9 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, setUserGames, tim
                             {
                             timeCategories.map(timeCategory => {
                                 return timeCategory.id !== 5 &&
-                                <Button key={timeCategory.id} className="history-modal-category-button"
-                                    onClick={() => {
-                                        const gameToUpdate = {...game}
-                                        gameToUpdate.timeCategoryId = timeCategory.id
-
-                                        const userGamesCopy = [...userGames]
-                                        userGamesCopy[userGames.indexOf(game)] = gameToUpdate
-                                        setUserGames(userGamesCopy)
-                                    }}
+                                <Button key={timeCategory.id} 
+                                    className="history-modal-category-button"
+                                    onClick={() => {updateCategoryOnGame(game, timeCategory.id)}}
                                 >{timeCategory.name}</Button>
                             }) 
                             }

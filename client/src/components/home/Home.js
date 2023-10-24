@@ -21,6 +21,15 @@ export const Home = ({loggedInUser}) => {
             setSavedUserGames(res)
         })
     }
+
+    const updateCategoryOnGame = (game, timeCategoryId) => {
+        const gameToUpdate = {...game}
+        gameToUpdate.timeCategoryId = timeCategoryId
+
+        const userGamesCopy = [...userGames]
+        userGamesCopy[userGames.indexOf(game)] = gameToUpdate
+        setUserGames(userGamesCopy)
+    }
     
     useEffect(() => {
         getSetSaveUserGames(loggedInUser)
@@ -53,6 +62,7 @@ export const Home = ({loggedInUser}) => {
                 userGames={userGames} 
                 timeCategories={timeCategories}
                 loggedInUser={loggedInUser}
+                updateCategoryOnGame={updateCategoryOnGame}
             />
         </div>
         <div className="games-rows-container">
@@ -61,7 +71,9 @@ export const Home = ({loggedInUser}) => {
                 return timeCategory.id !== 5 && <GamesRowByTime 
                     key={timeCategory.id} 
                     userGames={userGames} 
-                    timeCategory={timeCategory}/>
+                    timeCategory={timeCategory}
+                    updateCategoryOnGame={updateCategoryOnGame}
+                />
             })
         }
         </div>
