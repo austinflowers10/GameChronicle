@@ -10,6 +10,7 @@ public class GameChronicleDbContext : IdentityDbContext<IdentityUser>
     public DbSet<UserProfile> UserProfiles { get; set; }
     public DbSet<UserGame> UserGames { get; set; }
     public DbSet<TimeCategory> TimeCategories { get; set; }
+    public DbSet<Review> Reviews {get;set;}
 
     public GameChronicleDbContext(DbContextOptions<GameChronicleDbContext> context, IConfiguration config) : base(context)
     {

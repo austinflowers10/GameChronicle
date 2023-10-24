@@ -18,4 +18,5 @@ public class UserGame
     public int TimeCategoryId {get;set;}
     public TimeCategory TimeCategory {get;set;}
     public bool isCompleted {get;set;}
+    public List<Review> Reviews {get;set;}
 }

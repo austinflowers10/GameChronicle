@@ -13,3 +13,13 @@ export const putUserGame = (userGame) => {
         body: JSON.stringify(userGame),
       });
 }
+
+export const putUserGames = (userGames) => {
+    return fetch(_apiUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userGames),
+      });
+}

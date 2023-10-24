@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react"
 import { BiAddToQueue } from "react-icons/bi";
 import "./Home.css"
-import { getUserGamesPerUser } from "../../managers/userGameManager"
+import { getUserGamesPerUser, putUserGames } from "../../managers/userGameManager"
 import { GamesRowByTime } from "./GamesRowByTime"
 import { getTimeCategories } from "../../managers/timeCategoryManager"
 import { AddFromHistoryModal } from "./AddFromHistoryModal";
-import { Spinner } from "reactstrap";
+import { Button, Spinner } from "reactstrap";
 
 export const Home = ({loggedInUser}) => {
     const [userGames, setUserGames] = useState()
+    const [savedUserGames, setSavedUserGames] = useState()
     const [timeCategories, setTimeCategories] = useState()
     const [modal, setModal] = useState(false);
-    const [nestedModal, setNestedModal] = useState(false)
-    const [closeAll, setCloseAll] = useState(false);
 
     const toggle = () => setModal(!modal);
-    const toggleNested = () => setNestedModal(!nestedModal)
-    const toggleAll = () => {
-        setNestedModal(!nestedModal);
-        setCloseAll(true);
-      };
 
+    const getSetSaveUserGames = (loggedInUser) => {
+        getUserGamesPerUser(loggedInUser.id).then((res) => {
+            setUserGames(res)
+            setSavedUserGames(res)
+        })
+    }
+    
     useEffect(() => {
-        getUserGamesPerUser(loggedInUser.id).then(setUserGames)
+        getSetSaveUserGames(loggedInUser)
         getTimeCategories().then(setTimeCategories)
     },[]
     )
@@ -35,20 +36,26 @@ export const Home = ({loggedInUser}) => {
     return <div className="container">
         <div className="header-row">
             <h1 className="home-header">Playlist</h1>
-            <BiAddToQueue className="header-icon" onClick={toggle}/>
+            <BiAddToQueue className="header-icon" onClick={toggle}/> 
+            {
+                userGames !== savedUserGames
+                ? <Button 
+                    onClick={() => {
+                        putUserGames(userGames).then(() => {getSetSaveUserGames(loggedInUser)})
+                    }}
+                >Save Changes</Button>
+                : ""
+            }
             <AddFromHistoryModal 
                 modal={modal} 
                 toggle={toggle} 
-                nestedModal={nestedModal}
-                toggleNested={toggleNested}
-                toggleAll={toggleAll}
                 setUserGames={setUserGames}
                 userGames={userGames} 
-                closeAll={closeAll}
                 timeCategories={timeCategories}
                 loggedInUser={loggedInUser}
             />
         </div>
+        <div className="games-rows-container">
         {
             timeCategories.map(timeCategory => {
                 return timeCategory.id !== 5 && <GamesRowByTime 
@@ -57,5 +64,6 @@ export const Home = ({loggedInUser}) => {
                     timeCategory={timeCategory}/>
             })
         }
+        </div>
     </div>
 }
