@@ -1,9 +1,10 @@
-import { BiChevronUp, BiChevronDown, BiCheck } from "react-icons/bi";
+import { BiChevronUp, BiChevronDown } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 import { useState, useEffect } from "react"
 import { MoveToHistoryModal } from "./MoveToHistoryModal";
+import { HomeGameDetailsModal } from "./HomeGameDetailsModal";
 
-export const GamesRowByTime = ({userGames, timeCategory, updateCategoryOnGame}) => {
+export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCategoryOnGame}) => {
     const [sortedUserGames, setSortedUserGames] = useState()
 
     useEffect(() => {
@@ -36,12 +37,12 @@ export const GamesRowByTime = ({userGames, timeCategory, updateCategoryOnGame}) 
                         <p className="game-title">{game.gameSingle.name}</p>
                         <div className="game-card-options">
                             {/* History */}
-                
                             <MoveToHistoryModal 
                                 updateCategoryOnGame={updateCategoryOnGame}
-                                putUserGame={putUserGame}
                                 game={game}
+                                buttonIsIcon={true}
                             />    
+                            {/* Up Arrow */}
                             {
                                 timeCategory.id > 1
                                 ? <BiChevronUp onClick={() => {
@@ -54,6 +55,7 @@ export const GamesRowByTime = ({userGames, timeCategory, updateCategoryOnGame}) 
                                 }}/>
                                 : ""
                             }
+                            {/* Down Arrow */}
                             {
                                 timeCategory.id < 4
                                 ? <BiChevronDown onClick={() => {
@@ -67,6 +69,13 @@ export const GamesRowByTime = ({userGames, timeCategory, updateCategoryOnGame}) 
                                 : ""
                             }
                             {/* Details */}
+                            <HomeGameDetailsModal 
+                                updateCategoryOnGame={updateCategoryOnGame}
+                                game={game}
+                                buttonIsIcon={false}
+                                userGames={userGames}
+                                setUserGames={setUserGames} 
+                            />
                         </div>
                     </div>
                 })

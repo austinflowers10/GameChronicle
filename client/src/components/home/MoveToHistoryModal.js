@@ -1,16 +1,22 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
-import { BiCheck } from "react-icons/bi";
 import { useState } from "react"
+import { BiCheck } from "react-icons/bi";
+import { putUserGame } from "../../managers/userGameManager";
 
-export const MoveToHistoryModal = ({game, updateCategoryOnGame, putUserGame}) => {
+export const MoveToHistoryModal = ({game, updateCategoryOnGame, buttonIsIcon}) => {
     const [historyConfirmModal, setHistoryConfirmModal] = useState(false)
     const [newDateStarted, setNewDateStarted] = useState("")
     const [newDateFinished, setNewDateFinished] = useState("")
+    const [isChecked, setIsChecked] = useState()
 
     const toggleHistoryConfirmModal = () => setHistoryConfirmModal(!historyConfirmModal);     
 
     return <>
-    <BiCheck onClick={toggleHistoryConfirmModal} />
+    {
+        buttonIsIcon
+        ? <BiCheck onClick={toggleHistoryConfirmModal} />
+        : <Button onClick={toggleHistoryConfirmModal}>History</Button>
+    }
     <Modal 
     contentClassName="move-to-history-modal"
     isOpen={historyConfirmModal}
@@ -35,6 +41,14 @@ export const MoveToHistoryModal = ({game, updateCategoryOnGame, putUserGame}) =>
                     }}
                 />
             </fieldset>
+            <fieldset>
+                <label htmlFor="isCompleted">Completed to 100%?</label>
+                <input type="checkbox" id="isCompleted" checked={isChecked}
+                    onChange={(event) => {
+                        setIsChecked(event.target.checked)
+                    }}
+                />
+            </fieldset>
         </ModalBody>
         <ModalFooter>
             <Button color="primary" onClick={() => {
@@ -47,6 +61,11 @@ export const MoveToHistoryModal = ({game, updateCategoryOnGame, putUserGame}) =>
                 }
                 if (newDateFinished) {
                     gameToUpdate.dateFinished = newDateFinished
+                }
+                if (isChecked == true) {
+                    gameToUpdate.isCompleted = true
+                } else if (isChecked === false) {
+                    gameToUpdate.isCompleted = false
                 }
                 putUserGame(gameToUpdate)
                 toggleHistoryConfirmModal()
