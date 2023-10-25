@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { BiAddToQueue } from "react-icons/bi";
 import "./Home.css"
-import { getUserGamesPerUser, putUserGames } from "../../managers/userGameManager"
+import { getUserGamesPerUser } from "../../managers/userGameManager"
 import { GamesRowByTime } from "./GamesRowByTime"
 import { getTimeCategories } from "../../managers/timeCategoryManager"
 import { AddFromHistoryModal } from "./AddFromHistoryModal";
-import { Button, Spinner } from "reactstrap";
+import { Spinner } from "reactstrap";
 
 export const Home = ({loggedInUser}) => {
     const [userGames, setUserGames] = useState()
@@ -59,7 +59,8 @@ export const Home = ({loggedInUser}) => {
             timeCategories.map(timeCategory => {
                 return timeCategory.id !== 5 && <GamesRowByTime 
                     key={timeCategory.id} 
-                    userGames={userGames} 
+                    userGames={userGames}
+                    setUserGames={setUserGames} 
                     timeCategory={timeCategory}
                     updateCategoryOnGame={updateCategoryOnGame}
                 />
