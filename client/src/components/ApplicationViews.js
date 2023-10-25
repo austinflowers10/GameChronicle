@@ -4,9 +4,24 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./home/Home";
 import { AddGames } from "./addGames/AddGames.js";
-
+import { getUserGamesPerUser } from "../managers/userGameManager"
+import { useEffect, useState } from "react"
+import { Spinner } from "reactstrap";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
+    const [userGames, setUserGames] = useState()
+        
+    useEffect(() => {
+        getUserGamesPerUser(loggedInUser.id).then((res) => {
+            setUserGames(res)
+        })
+    },[]
+    )
+
+    if (!userGames) {
+        return <Spinner />
+    }
+
   return (
     <Routes>
       <Route path="/">
@@ -14,23 +29,65 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <Home loggedInUser={loggedInUser}/>
+                <Home loggedInUser={loggedInUser} userGames={userGames} setUserGames={setUserGames}/>
             </AuthorizedRoute>
           }
         />
         <Route
-          path="playlist"
+          path="collections"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <Home loggedInUser={loggedInUser}/>
+                {/* <CollectionsParent userGames={userGames}/> */}
             </AuthorizedRoute>
           }
-        />
+        >
+            <Route 
+                path="favorites"
+                element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                    {/* <Favorites userGames={userGames}/>*/}
+                    </AuthorizedRoute>
+                }
+            />
+            <Route 
+                path="replayables"
+                element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                    {/* <Replayables userGames={userGames}/> */}
+                    </AuthorizedRoute>
+                }
+            />
+            <Route 
+                path="history"
+                element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                    {/* <History userGames={userGames}/> */}
+                    </AuthorizedRoute>
+                }
+            />
+        </Route>
+        <Route
+          path="reviews"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+                {/* <Reviews userGames={userGames}/> */}
+            </AuthorizedRoute>
+          }
+        >
+            <Route 
+                path=":id"
+                element={
+                    <AuthorizedRoute loggedInUser={loggedInUser}>
+                    {/* <ReviewsForGame userGames={userGames}/> */}
+                    </AuthorizedRoute>
+                }
+            />
+        </Route>
         <Route
           path="addgames"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <AddGames/>
+                <AddGames userGames={userGames} setUserGames={setUserGames}/>
             </AuthorizedRoute>
           }
         />

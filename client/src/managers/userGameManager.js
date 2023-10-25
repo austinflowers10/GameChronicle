@@ -1,11 +1,11 @@
 const _apiUrl = "/api/usergame";
 
 export const getUserGamesPerUser = (id) => {
-    return fetch(_apiUrl + `/${id}`).then((res) => res.json());
+    return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 }
 
 export const putUserGame = (userGame) => {
-    return fetch(_apiUrl + `/${userGame.id}`, {
+    return fetch(`${_apiUrl}/${userGame.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -22,4 +22,8 @@ export const putUserGames = (userGames) => {
         },
         body: JSON.stringify(userGames),
       });
+}
+
+export const deleteUserGame = (id) => {
+    return fetch(`${_apiUrl}/${id}`, {method: "DELETE"})
 }

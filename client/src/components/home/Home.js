@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react"
 import { BiAddToQueue } from "react-icons/bi";
 import "./Home.css"
-import { getUserGamesPerUser } from "../../managers/userGameManager"
 import { GamesRowByTime } from "./GamesRowByTime"
 import { getTimeCategories } from "../../managers/timeCategoryManager"
 import { AddFromHistoryModal } from "./AddFromHistoryModal";
 import { Spinner } from "reactstrap";
 
-export const Home = ({loggedInUser}) => {
-    const [userGames, setUserGames] = useState()
+export const Home = ({ userGames, setUserGames }) => {
     const [timeCategories, setTimeCategories] = useState()
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
-
-    const getSetUserGames = (loggedInUser) => {
-        getUserGamesPerUser(loggedInUser.id).then((res) => {
-            setUserGames(res)
-        })
-    }
 
     const updateCategoryOnGame = (game, timeCategoryId) => {
         const gameToUpdate = {...game}
@@ -30,12 +22,11 @@ export const Home = ({loggedInUser}) => {
     }
     
     useEffect(() => {
-        getSetUserGames(loggedInUser)
         getTimeCategories().then(setTimeCategories)
     },[]
     )
 
-    if (!userGames || !timeCategories) {
+    if (!timeCategories) {
         return <Spinner />
     }
     // console.log(userGames.filter(game => game.timeCategoryId === 5).length)
@@ -50,7 +41,6 @@ export const Home = ({loggedInUser}) => {
                 setUserGames={setUserGames}
                 userGames={userGames} 
                 timeCategories={timeCategories}
-                loggedInUser={loggedInUser}
                 updateCategoryOnGame={updateCategoryOnGame}
             />
         </div>
