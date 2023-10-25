@@ -36,12 +36,6 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                         <img className="game-image"src={game.gameSingle.background_image}/>
                         <p className="game-title">{game.gameSingle.name}</p>
                         <div className="game-card-options">
-                            {/* History */}
-                            <MoveToHistoryModal 
-                                updateCategoryOnGame={updateCategoryOnGame}
-                                game={game}
-                                buttonIsIcon={true}
-                            />    
                             {/* Up Arrow */}
                             {
                                 timeCategory.id > 1
@@ -68,6 +62,12 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                                 }}/>
                                 : ""
                             }
+                            {/* History */}
+                            <MoveToHistoryModal 
+                                updateCategoryOnGame={updateCategoryOnGame}
+                                game={game}
+                                buttonIsIcon={true}
+                            />    
                             {/* Details */}
                             <HomeGameDetailsModal 
                                 updateCategoryOnGame={updateCategoryOnGame}

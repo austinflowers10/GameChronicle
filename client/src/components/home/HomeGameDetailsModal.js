@@ -4,9 +4,12 @@ import { BiDotsHorizontalRounded, BiX } from "react-icons/bi";
 import { MoveToHistoryModal } from "./MoveToHistoryModal";
 import { ReplayableModal } from "./ReplayableModal";
 import { putUserGame } from "../../managers/userGameManager";
+import { useNavigate } from "react-router-dom";
+import { DeleteConfirmModal } from "./DeleteConfirmModal";
 
 export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCategoryOnGame }) => {
     const [modal, setModal] = useState(false)
+    const navigate = useNavigate()
     
     const toggle = () => setModal(!modal);
 
@@ -50,9 +53,6 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                                        
                     </div>
                     <div className="home-game-details-options">
-                        <Button color="secondary" onClick={toggle}>
-                        Favorite
-                        </Button>
                         <ReplayableModal
                             putUserGame={putUserGame}
                             game={game}
@@ -65,13 +65,25 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                             putUserGame={putUserGame}
                             game={game}
                         />
-                        <Button>
-                            Review
+                        <Button onClick={() => {
+                            const gameToUpdate = {...game}
+                            if (gameToUpdate.favoriteRanking === null) {
+                                gameToUpdate.favoriteRanking = 0
+                                putUserGame(gameToUpdate).then(() => navigate("/collections/favorites"))
+                            } else {
+                                navigate("/collections/favorites")
+                            }
+                        }}>
+                            Go to Favorites
                         </Button>
-                        <Button color="danger">
-                            Delete
+                        <Button onClick={() => {navigate(`/reviews/${game.id}`)}}>
+                            Go To Reviews
                         </Button>
-
+                        <DeleteConfirmModal 
+                            game={game} 
+                            userGames={userGames}
+                            setUserGames={setUserGames}
+                        />
                     </div>                    
                 </div>
             </div>

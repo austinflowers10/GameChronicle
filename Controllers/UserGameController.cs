@@ -75,5 +75,18 @@ public class UserGameController : ControllerBase
         _dbContext.SaveChanges(); // Save changes to the database
         return NoContent(); 
     }
+
+    [HttpDelete("{id}")] 
+    public IActionResult DeleteUserGame(int id)
+    {
+        UserGame foundUserGame = _dbContext.UserGames.SingleOrDefault(ug => ug.Id == id);
+        if (foundUserGame == null)
+        {
+            return NotFound();
+        }
+        _dbContext.Remove(foundUserGame);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
     
 }
