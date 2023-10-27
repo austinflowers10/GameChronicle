@@ -1,15 +1,27 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiCheck } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
 export const MoveToHistoryModal = ({game, updateCategoryOnGame, buttonIsIcon}) => {
     const [historyConfirmModal, setHistoryConfirmModal] = useState(false)
-    const [newDateStarted, setNewDateStarted] = useState("")
-    const [newDateFinished, setNewDateFinished] = useState("")
+    const [newDateStarted, setNewDateStarted] = useState(null)
+    const [newDateFinished, setNewDateFinished] = useState(null)
     const [isChecked, setIsChecked] = useState()
 
     const toggleHistoryConfirmModal = () => setHistoryConfirmModal(!historyConfirmModal);     
+
+    useEffect(() => {
+        if (game.dateStarted) {
+            setNewDateStarted(game.dateStarted.split("T")[0])
+        }
+        if (game.dateFinished) {
+            setNewDateFinished(game.dateFinished?.split("T")[0])
+        }
+        if (game.isCompleted) {
+            setIsChecked = true
+        }
+    }, [game])
 
     return <>
     {

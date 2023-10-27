@@ -69,9 +69,9 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                             const gameToUpdate = {...game}
                             if (gameToUpdate.favoriteRanking === null) {
                                 gameToUpdate.favoriteRanking = 0
-                                putUserGame(gameToUpdate).then(() => navigate("/collections/favorites"))
+                                putUserGame(gameToUpdate).then(() => navigate("/favorites"))
                             } else {
-                                navigate("/collections/favorites")
+                                navigate("/favorites")
                             }
                         }}>
                             Favorite
