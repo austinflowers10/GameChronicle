@@ -27,3 +27,14 @@ export const putUserGames = (userGames) => {
 export const deleteUserGame = (id) => {
     return fetch(`${_apiUrl}/${id}`, {method: "DELETE"})
 }
+
+export const postUserGame = (userGame) => {
+    return fetch(_apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userGame)
+      })
+      .then((res) => res.json());
+}

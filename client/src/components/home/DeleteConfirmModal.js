@@ -23,7 +23,7 @@ export const DeleteConfirmModal = ({game, userGames, setUserGames}) => {
         >
         <ModalHeader toggle={toggle}>Delete Warning</ModalHeader>
             <ModalBody>
-                <p>This action will completely delete this game, with all of its related information and any reviews you have written. Are you sure?</p>
+                <p>This action will completely delete this game with all of its related information. Are you sure?</p>
                 <fieldset>
                     <label htmlFor="deleteCheckbox">I understand</label>
                     <input type="checkbox" id="deleteCheckbox" checked={isChecked}

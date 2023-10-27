@@ -602,7 +602,7 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "f0f0968f-f104-40ce-895a-856e88c9704b",
+                            ConcurrencyStamp = "0b3ca082-fe1c-4b8c-9d41-7ea028877ee4",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -701,13 +701,13 @@ namespace GameChronicle.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "df3c75a7-7eae-4da2-a795-c2feaed514fe",
+                            ConcurrencyStamp = "dab8757c-6958-494e-ae39-90f25f92679f",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEOoZWx9rDKBLIEW3iL+wa4tNxZcF4MaNcpQjw+1g/MbRzUUW3/mlB6QcZKT1TwJ04A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDP7lV2H+YgUWR/l1OBz6p7G18taxE95w+7U70ibi5oJAbCdyAx1uQiZHA849+7EtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d2159b3d-1f41-471e-90cf-1945329b350d",
+                            SecurityStamp = "031ea70b-6f4a-4fe0-9744-8256ce96e863",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

@@ -38,7 +38,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                             <h3>Platforms:</h3>
                             <ul>
                             {
-                                game.gameSingle.parent_platforms.map(pp => <li>{pp.platform.name}</li>)
+                                game.gameSingle.platforms.map(pp => <li>{pp.platform.name}</li>)
                             }
                             </ul>
                         </div>
@@ -74,11 +74,11 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                                 navigate("/collections/favorites")
                             }
                         }}>
-                            Go to Favorites
+                            Favorite
                         </Button>
-                        <Button onClick={() => {navigate(`/reviews/${game.id}`)}}>
+                        {/* <Button onClick={() => {navigate(`/reviews/${game.id}`)}}>
                             Go To Reviews
-                        </Button>
+                        </Button> */}
                         <DeleteConfirmModal 
                             game={game} 
                             userGames={userGames}

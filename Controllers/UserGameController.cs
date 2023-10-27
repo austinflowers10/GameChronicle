@@ -89,4 +89,18 @@ public class UserGameController : ControllerBase
         return NoContent();
     }
     
+    [HttpPost]
+    public async Task<IActionResult> PostUserGame(UserGame userGame)
+    {
+        _dbContext.UserGames.Add(userGame);
+        _dbContext.SaveChanges();
+
+        userGame.UserProfile = _dbContext.UserProfiles.SingleOrDefault(up => up.Id == userGame.UserProfileId);
+        userGame.GameSingle = await _apiService.GetById(userGame.GameNumber);
+        userGame.TimeCategory = _dbContext.TimeCategories.SingleOrDefault(t => t.Id == userGame.TimeCategoryId);
+        
+        return Created($"api/usergame/{userGame.Id}", userGame);
+    }
 }
+
+
