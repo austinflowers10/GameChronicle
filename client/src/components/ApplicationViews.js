@@ -3,10 +3,10 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./home/Home";
-import { AddGames } from "./addGames/AddGames.js";
 import { getUserGamesPerUser } from "../managers/userGameManager"
 import { useEffect, useState } from "react"
 import { Spinner } from "reactstrap";
+import { AddGames } from "./addGames/AddGames.js";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
     const [userGames, setUserGames] = useState()
@@ -17,10 +17,6 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         })
     },[]
     )
-
-    if (!userGames) {
-        return <Spinner />
-    }
 
   return (
     <Routes>
@@ -87,7 +83,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="addgames"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                <AddGames userGames={userGames} setUserGames={setUserGames}/>
+                <AddGames userGames={userGames} setUserGames={setUserGames} loggedInUser={loggedInUser}/>
             </AuthorizedRoute>
           }
         />

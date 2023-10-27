@@ -27,5 +27,20 @@ public class GameApiService
 
         return foundGame; 
     }
+
+    public async Task<GameResultsObject> GetSearchedGames(int page, string search)
+    {
+        
+        var uri = $"https://api.rawg.io/api/games?key={_configuration["gameAPIKey"]}&search_precise=true&exclude_additions=true&page_size=20";
+
+        if (search != null) 
+        {
+            uri += $"&search={search}";
+        }
+
+        var gameResultsObject = await _httpClient.GetFromJsonAsync<GameResultsObject>(uri);
+
+        return gameResultsObject;
+    }
 }
 

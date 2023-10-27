@@ -5,5 +5,9 @@ export const getGames = async () => {
 }
 
 export const getGameById = (id) => {
-    return fetch(_apiUrl + `/${id}`).then((res) => res.json());
+    return fetch( `${_apiUrl}/${id}`).then((res) => res.json());
+}
+
+export const getSearchedGamesPerPage = (page, search) => {
+    return fetch(`${_apiUrl}/search?page=${page}&search=${search}`).then((res) => res.json());
 }

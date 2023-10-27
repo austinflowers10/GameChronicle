@@ -23,7 +23,7 @@ public class GameController : ControllerBase
             Id = game.Id, 
             Name = game.Name,
             DateReleased = game.DateReleased, 
-            Platforms = game.ParentPlatforms.Select(pp => (new { Id = pp.Platform.Id, Name = pp.Platform.Name })).ToList(),
+            Platforms = game.OuterPlatforms.Select(pp => (new { Id = pp.Platform.Id, Name = pp.Platform.Name })).ToList(),
             Genres = game.Genres,
             ImageURL = game.ImageURL
         }).ToList();
@@ -39,7 +39,22 @@ public class GameController : ControllerBase
     }
     // This will need to be reworked to return a custom object similar to the first endpoint
 
+    [HttpGet("search")]
+    public async Task<IActionResult> GetPaginatedResultsBySearch(int page = 1, string search = null)
+    {
+        var gameResultsObject = await _apiService.GetSearchedGames(page, search);
+        var gamesWithPlatforms = gameResultsObject.Games.Select(game => new
+        {
+            Id = game.Id, 
+            Name = game.Name,
+            DateReleased = game.DateReleased, 
+            Platforms = game.OuterPlatforms.Select(pp => (new { Id = pp.Platform.Id, Name = pp.Platform.Name })).ToList(),
+            Genres = game.Genres,
+            ImageURL = game.ImageURL
+        }).ToList();
 
+        return Ok(gamesWithPlatforms);
+    }
 }
 
 
