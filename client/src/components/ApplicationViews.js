@@ -6,7 +6,9 @@ import { Home } from "./home/Home";
 import { getUserGamesPerUser } from "../managers/userGameManager"
 import { useEffect, useState } from "react"
 import { Spinner } from "reactstrap";
-import { AddGames } from "./addGames/AddGames.js";
+import { AddGames } from "./addGames/AddGames";
+import { Replayables } from "./collections/Replayables";
+
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
     const [userGames, setUserGames] = useState()
@@ -29,14 +31,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="collections"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                {/* <CollectionsParent userGames={userGames}/> */}
+                <CollectionsParent userGames={userGames}/>
             </AuthorizedRoute>
           }
-        >
+        > */}
             <Route 
                 path="favorites"
                 element={
@@ -49,7 +51,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 path="replayables"
                 element={
                     <AuthorizedRoute loggedInUser={loggedInUser}>
-                    {/* <Replayables userGames={userGames}/> */}
+                        <Replayables userGames={userGames} setUserGames={setUserGames}/>
                     </AuthorizedRoute>
                 }
             />
@@ -61,7 +63,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     </AuthorizedRoute>
                 }
             />
-        </Route>
+        {/* </Route> */}
         <Route
           path="reviews"
           element={

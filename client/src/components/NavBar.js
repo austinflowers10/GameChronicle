@@ -33,6 +33,11 @@ return (
                         Add Games
                     </NavLink>
                 </NavItem>
+                <NavItem onClick={() => setOpen(false)}>
+                    <NavLink tag={RRNavLink} to="/replayables">
+                        Replayables
+                    </NavLink>
+                </NavItem>
             </Nav>
             
             </Collapse>
