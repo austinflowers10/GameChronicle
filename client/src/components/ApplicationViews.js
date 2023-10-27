@@ -8,6 +8,8 @@ import { useEffect, useState } from "react"
 import { Spinner } from "reactstrap";
 import { AddGames } from "./addGames/AddGames";
 import { Replayables } from "./collections/Replayables";
+import { Favorites } from "./collections/Favorites";
+import { History } from "./collections/History";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -43,7 +45,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 path="favorites"
                 element={
                     <AuthorizedRoute loggedInUser={loggedInUser}>
-                    {/* <Favorites userGames={userGames}/>*/}
+                        <Favorites userGames={userGames} setUserGames={setUserGames}/>
                     </AuthorizedRoute>
                 }
             />
@@ -59,7 +61,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                 path="history"
                 element={
                     <AuthorizedRoute loggedInUser={loggedInUser}>
-                    {/* <History userGames={userGames}/> */}
+                        <History userGames={userGames} setUserGames={setUserGames}/>
                     </AuthorizedRoute>
                 }
             />

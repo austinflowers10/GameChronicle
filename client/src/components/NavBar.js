@@ -34,8 +34,18 @@ return (
                     </NavLink>
                 </NavItem>
                 <NavItem onClick={() => setOpen(false)}>
+                    <NavLink tag={RRNavLink} to="/favorites">
+                        Favorites
+                    </NavLink>
+                </NavItem>
+                <NavItem onClick={() => setOpen(false)}>
                     <NavLink tag={RRNavLink} to="/replayables">
                         Replayables
+                    </NavLink>
+                </NavItem>
+                <NavItem onClick={() => setOpen(false)}>
+                    <NavLink tag={RRNavLink} to="/history">
+                        History
                     </NavLink>
                 </NavItem>
             </Nav>
