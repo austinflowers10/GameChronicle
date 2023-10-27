@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BiX } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
-export const RemoveReplayableModal = ({game, updateReplayabilityOnGame}) => {
+export const RemoveFavoriteModal = ({game, setUserGames, userGames}) => {
     const [modal, setModal] = useState(false)
     
     const toggle = () => setModal(!modal);
@@ -15,17 +15,21 @@ export const RemoveReplayableModal = ({game, updateReplayabilityOnGame}) => {
             isOpen={modal}
             toggle={toggle}
         >
-        <ModalHeader toggle={toggle}>Remove Replayable</ModalHeader>
+        <ModalHeader toggle={toggle}>Remove Favorite</ModalHeader>
             <ModalBody>
-                <p>Are you sure you want to remove {game.gameSingle.name} from Replayables?</p>
+                <p>Are you sure you want to remove {game.gameSingle.name} from Favorites?</p>
             </ModalBody>
             <ModalFooter>
                 <Button color="danger" onClick={() => {
-                    updateReplayabilityOnGame(game, null)
-
                     const gameToUpdate = {...game}
-                    gameToUpdate.replayabilityRating = null
-                    putUserGame(gameToUpdate)
+                    gameToUpdate.favoriteRanking = null
+            
+                    const userGamesCopy = [...userGames]
+                    userGamesCopy[userGames.indexOf(game)] = gameToUpdate
+                    setUserGames(userGamesCopy)
+                    
+                    // putUserGame(gameToUpdate)
+                    console.log({...gameToUpdate})
 
                     toggle()
                 }}>

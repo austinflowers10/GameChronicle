@@ -1,4 +1,4 @@
-.history-game-details-background {
+.game-details-background {
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -8,17 +8,17 @@
     color: white;    
 }
 
-.history-game-details-description {
+.game-details-description {
     overflow: auto;
     height: 60%;
     width: 30%;
 }
-.history-game-details-footer {
+.game-details-footer {
     height: 30%;
     width: 100%;
 }
 
-.history-game-details-row {
+.game-details-row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -32,7 +32,7 @@
 
 } */
 
-.history-game-details-options {
+.game-details-options {
     display: flex;
     justify-content: center;
     margin-left: auto;

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { BiCheck } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
-export const MoveToHistoryModal = ({game, updateCategoryOnGame, buttonIsIcon}) => {
+export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategoryOnGame, buttonIsIcon}) => {
     const [historyConfirmModal, setHistoryConfirmModal] = useState(false)
     const [newDateStarted, setNewDateStarted] = useState(null)
     const [newDateFinished, setNewDateFinished] = useState(null)
@@ -13,13 +13,13 @@ export const MoveToHistoryModal = ({game, updateCategoryOnGame, buttonIsIcon}) =
 
     useEffect(() => {
         if (game.dateStarted) {
-            setNewDateStarted(game.dateStarted.split("T")[0])
+            setNewDateStarted(game.dateStarted?.split("T")[0])
         }
         if (game.dateFinished) {
             setNewDateFinished(game.dateFinished?.split("T")[0])
         }
         if (game.isCompleted) {
-            setIsChecked = true
+            setIsChecked(true)
         }
     }, [game])
 
@@ -63,22 +63,26 @@ export const MoveToHistoryModal = ({game, updateCategoryOnGame, buttonIsIcon}) =
             </fieldset>
         </ModalBody>
         <ModalFooter>
-            <Button color="primary" onClick={() => {
-                updateCategoryOnGame(game, 5)
-                                        
+            <Button color="primary" onClick={() => {       
                 const gameToUpdate = {...game}
+
                 gameToUpdate.timeCategoryId = 5
                 if (newDateStarted) {
-                    gameToUpdate.dateStarted = newDateStarted
+                    gameToUpdate.dateStarted = `${newDateStarted}T00:00:00`
                 }
                 if (newDateFinished) {
-                    gameToUpdate.dateFinished = newDateFinished
+                    gameToUpdate.dateFinished = `${newDateFinished}T00:00:00`
                 }
                 if (isChecked == true) {
                     gameToUpdate.isCompleted = true
                 } else if (isChecked === false) {
                     gameToUpdate.isCompleted = false
                 }
+
+                const userGamesCopy = [...userGames]
+                userGamesCopy[userGames.indexOf(game)] = gameToUpdate
+                setUserGames(userGamesCopy)
+
                 putUserGame(gameToUpdate)
                 toggleHistoryConfirmModal()
             }}>

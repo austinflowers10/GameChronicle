@@ -4,7 +4,7 @@ import "./Collections.css"
 import { BiDotsHorizontalRounded, BiX } from "react-icons/bi";
 import { useState } from "react";
 
-export const HistoryGameDetailsModal = ({game, updateCategoryOnGame }) => {
+export const FavoriteGameDetailsModal = ({game, updateCategoryOnGame }) => {
     const [modal, setModal] = useState(false)
     
     const toggle = () => setModal(!modal);
@@ -49,7 +49,7 @@ export const HistoryGameDetailsModal = ({game, updateCategoryOnGame }) => {
                                        
                     </div>
                     <div className="game-details-options">
-                       <Button onClick={() => {
+                       {/* <Button onClick={() => {
                             updateCategoryOnGame(game, 4)
 
                             const gameToUpdate = {...game}
@@ -58,7 +58,7 @@ export const HistoryGameDetailsModal = ({game, updateCategoryOnGame }) => {
 
                             toggle()
 
-                       }}>Add Game to Playlist</Button>
+                       }}>Add Game to Playlist</Button> */}
                     </div>                    
                 </div>
             </div>

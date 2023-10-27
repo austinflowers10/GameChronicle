@@ -64,8 +64,10 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                             }
                             {/* History */}
                             <MoveToHistoryModal 
-                                updateCategoryOnGame={updateCategoryOnGame}
+                                putUserGame={putUserGame}
                                 game={game}
+                                userGames={userGames}
+                                setUserGames={setUserGames}
                                 buttonIsIcon={true}
                             />    
                             {/* Details */}
