@@ -9,7 +9,7 @@ export const History = ({ userGames, setUserGames }) => {
             setSortedUserGames(
                 userGames
                 .filter(userGame => userGame.timeCategoryId === 5)
-                .sort((a, b) => a.dateFinished - b.dateFinished)
+                .sort((a, b) => new Date(b.dateFinished) - new Date(a.dateFinished))
             )
         }
     },[userGames])

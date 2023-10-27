@@ -61,9 +61,10 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                         />
                         
                         <MoveToHistoryModal 
-                            updateCategoryOnGame={updateCategoryOnGame}
                             putUserGame={putUserGame}
                             game={game}
+                            userGames={userGames}
+                            setUserGames={setUserGames}
                         />
                         <Button onClick={() => {
                             const gameToUpdate = {...game}
