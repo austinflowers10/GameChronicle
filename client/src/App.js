@@ -5,9 +5,11 @@ import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
 import NavBar from "./components/NavBar";
 import ApplicationViews from "./components/ApplicationViews";
+import { getUserGamesPerUser } from "./managers/userGameManager";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState();
+    const [userGames, setUserGames] = useState()
+    const [loggedInUser, setLoggedInUser] = useState();
 
   useEffect(() => {
     // user will be null if not authenticated
@@ -16,6 +18,15 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    if (loggedInUser) {
+        getUserGamesPerUser(loggedInUser.id).then((res) => {
+            setUserGames(res)
+        })
+    }
+},[loggedInUser]
+)
+
   // wait to get a definite logged-in state before rendering
   if (loggedInUser === undefined) {
     return <Spinner />;
@@ -23,10 +34,12 @@ function App() {
 
   return (
     <>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} setUserGames={setUserGames}/>
       <ApplicationViews
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
+        setUserGames={setUserGames}
+        userGames={userGames}
       />
     </>
   );

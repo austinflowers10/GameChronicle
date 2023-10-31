@@ -1,39 +1,42 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
 import { useEffect, useState } from "react";
-import { BiX } from "react-icons/bi";
+import { BiDownvote} from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
-export const RemoveFavoriteModal = ({game, setUserGames, userGames}) => {
+export const DemoteFavoriteModal = ({game, setUserGames, userGames, favorites}) => {
     const [modal, setModal] = useState(false)
     
     const toggle = () => setModal(!modal);
 
     return <>
-        <BiX onClick={toggle}/>
+        <BiDownvote onClick={toggle}/>
         <Modal 
-            contentClassName="remove-confirm-modal"
+            contentClassName="demote-favorite-modal"
             isOpen={modal}
             toggle={toggle}
         >
-        <ModalHeader toggle={toggle}>Remove Favorite</ModalHeader>
+        <ModalHeader toggle={toggle}>Demote Favorite From Top Ten</ModalHeader>
             <ModalBody>
-                <p>Are you sure you want to remove {game.gameSingle.name} from Favorites?</p>
+                <p>Are you sure you want to take {game.gameSingle.name} out of your Top Ten?</p>
             </ModalBody>
             <ModalFooter>
-                <Button color="danger" onClick={() => {
+                <Button onClick={() => {
+                    const gameWithHighestFavoriteRank = favorites.reduce((prev, current) => {
+                        return prev.favoriteRanking > current.favoriteRanking ? prev : current;
+                      });
+
                     const gameToUpdate = {...game}
-                    gameToUpdate.favoriteRanking = null
+                    gameToUpdate.favoriteRanking = gameWithHighestFavoriteRank + 1 
             
                     const userGamesCopy = [...userGames]
                     userGamesCopy[userGames.indexOf(game)] = gameToUpdate
                     setUserGames(userGamesCopy)
                     
                     putUserGame(gameToUpdate)
-                    console.log({...gameToUpdate})
 
                     toggle()
                 }}>
-                    Remove
+                    Demote
                 </Button>{' '}
                 <Button color="secondary" onClick={toggle}>
                     Cancel

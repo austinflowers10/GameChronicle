@@ -12,7 +12,7 @@ NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
 
-export default function NavBar({ loggedInUser, setLoggedInUser }) {
+export default function NavBar({ loggedInUser, setLoggedInUser, setUserGames}) {
 const [open, setOpen] = useState(false);
 
 const toggleNavbar = () => setOpen(!open);
@@ -59,6 +59,7 @@ return (
                 logout().then(() => {
                 setLoggedInUser(null);
                 setOpen(false);
+                setUserGames(undefined)
                 });
             }}
             >
