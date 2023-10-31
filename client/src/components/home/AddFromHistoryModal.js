@@ -1,8 +1,9 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollapse } from "reactstrap";
 import { putUserGame } from "../../managers/userGameManager";
+import { useNavigate } from "react-router-dom";
 
 export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, updateCategoryOnGame}) => {
-
+    const navigate = useNavigate()
     return <>
     <Modal 
         contentClassName="add-from-history-modal"
@@ -10,7 +11,9 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
         toggle={toggle}
     >
     <ModalHeader toggle={toggle}>Add Game from History</ModalHeader>
-        <ModalBody style={{overflow: 'auto'}}>
+    {
+        userGames.filter(game => game.timeCategoryId === 5).length
+        ? <ModalBody style={{overflow: 'auto'}}>
             {
                 userGames
                     .filter(game => game.timeCategoryId === 5)
@@ -50,6 +53,11 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
                 })
             }
         </ModalBody>
+        : <ModalBody style={{overflow: 'auto'}}>
+            <p>You currently have no games in History</p>
+            <Button onClick={() => navigate("addgames")}>Go to Add Games Page</Button>
+        </ModalBody>
+    }
         <ModalFooter></ModalFooter>
     </Modal>
 </>

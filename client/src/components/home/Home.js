@@ -4,11 +4,13 @@ import "./Home.css"
 import { GamesRowByTime } from "./GamesRowByTime"
 import { getTimeCategories } from "../../managers/timeCategoryManager"
 import { AddFromHistoryModal } from "./AddFromHistoryModal";
-import { Spinner } from "reactstrap";
+import { Button, Spinner } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 export const Home = ({ userGames, setUserGames }) => {
     const [timeCategories, setTimeCategories] = useState()
     const [modal, setModal] = useState(false);
+    const navigate = useNavigate()
 
     const toggle = () => setModal(!modal);
 
@@ -50,7 +52,8 @@ export const Home = ({ userGames, setUserGames }) => {
         </div>
         <div className="games-rows-container">
         {
-            timeCategories.map(timeCategory => {
+            userGames.length
+            ? timeCategories.map(timeCategory => {
                 return timeCategory.id !== 5 && <GamesRowByTime 
                     key={timeCategory.id} 
                     userGames={userGames}
@@ -59,6 +62,10 @@ export const Home = ({ userGames, setUserGames }) => {
                     updateCategoryOnGame={updateCategoryOnGame}
                 />
             })
+            : <div>
+                <p>You currently have no games</p>
+                <Button onClick={() => navigate("addgames")}>Add Games</Button>
+            </div>
         }
         </div>
     </div>

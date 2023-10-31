@@ -84,7 +84,11 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
             }
             </div>
         </>
-        : ""
+        : <> 
+            <h2 className="game-row-header">{timeCategory.name}</h2>
+            <p>No games in this category</p>
+        </>
+       
     }
     </div>
 }

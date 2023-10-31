@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
+import { Modal, ModalBody, ModalFooter, ModalHeader, Button, NavItem } from "reactstrap"
 import { useState } from "react"
 import { BiDotsHorizontalRounded, BiX } from "react-icons/bi";
 import { MoveToHistoryModal } from "./MoveToHistoryModal";
@@ -7,7 +7,7 @@ import { putUserGame } from "../../managers/userGameManager";
 import { useNavigate } from "react-router-dom";
 import { DeleteConfirmModal } from "./DeleteConfirmModal";
 
-export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCategoryOnGame }) => {
+export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
     const [modal, setModal] = useState(false)
     const navigate = useNavigate()
     
@@ -66,17 +66,34 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames, updateCateg
                             userGames={userGames}
                             setUserGames={setUserGames}
                         />
-                        <Button onClick={() => {
-                            const gameToUpdate = {...game}
-                            if (gameToUpdate.favoriteRanking === null) {
-                                gameToUpdate.favoriteRanking = 0
-                                putUserGame(gameToUpdate).then(() => navigate("/favorites"))
-                            } else {
-                                navigate("/favorites")
-                            }
-                        }}>
-                            Favorite
-                        </Button>
+                        {
+                            game.favoriteRanking === null
+                            ? <Button onClick={() => {
+                                const favorites = userGames.filter(ug => ug.favoriteRanking)
+
+                                const gameWithHighestFavoriteRank = favorites.reduce((prev, current) => {
+                                    return prev.favoriteRanking > current.favoriteRanking ? prev : current;
+                                  }, { favoriteRanking: 0 });
+
+                                const gameToUpdate = {...game}
+                                if (gameWithHighestFavoriteRank.favoriteRanking < 11) {
+                                    gameToUpdate.favoriteRanking = 11
+                                } else {
+                                    gameToUpdate.favoriteRanking = gameWithHighestFavoriteRank.favoriteRanking + 1
+                                }
+                                const userGamesCopy = [...userGames]
+                                userGamesCopy[userGames.indexOf(game)] = gameToUpdate
+                                setUserGames(userGamesCopy)
+
+                                putUserGame(gameToUpdate)
+
+                                toggle()
+                            
+                                }}>
+                                    Favorite
+                                </Button>
+                            : <Button onClick={() => navigate("favorites")}>Go to Favorites</Button>
+                        }
                         {/* <Button onClick={() => {navigate(`/reviews/${game.id}`)}}>
                             Go To Reviews
                         </Button> */}

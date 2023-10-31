@@ -12,7 +12,7 @@
 }
 
 .add-from-history-modal {
-    height: 93vh;
+    max-height: 93vh;
     width: 50vw;
 }
 

@@ -12,15 +12,7 @@ import { Favorites } from "./collections/Favorites";
 import { History } from "./collections/History";
 
 
-export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
-    const [userGames, setUserGames] = useState()
-        
-    useEffect(() => {
-        getUserGamesPerUser(loggedInUser.id).then((res) => {
-            setUserGames(res)
-        })
-    },[]
-    )
+export default function ApplicationViews({ loggedInUser, setLoggedInUser ,userGames, setUserGames}) {
 
   return (
     <Routes>
