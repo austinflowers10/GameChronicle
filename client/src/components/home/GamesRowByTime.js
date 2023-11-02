@@ -34,7 +34,7 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                             style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
                             >
                         <div className="game-card-options-row">
-                        <p className="game-title">{game.gameSingle.name}</p>
+                        <p className="game-title other">{game.gameSingle.name}</p>
                         <div className="game-card-options">
                             {/* Up Arrow */}
                             {

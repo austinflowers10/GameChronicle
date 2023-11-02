@@ -255,12 +255,12 @@ namespace GameChronicle.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "4f4bc5d7-b45e-4906-86d5-ede401d23c25", "Admin", "admin" });
+                values: new object[] { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "2593f51d-9818-4240-90b8-08cc0c597d88", "Admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b01f3896-bda3-4c21-b5c9-01b0e5b1efa7", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEKAM1w2q94ERDp2IdPXVRvAojIDbD8saYygMkCPtiFbt/ML8Gc2OeZFgp1b5P7MXUw==", null, false, "832059a1-8e69-4352-a2f9-35e355f99b5f", false, "Administrator" });
+                values: new object[] { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "dd75389d-d243-4b4f-904e-6867e2de2508", "admina@strator.comx", false, false, null, null, null, "AQAAAAEAACcQAAAAEBLX7NN9KUS0399o6h476PhNhyFrJHS8Y8PHbHZcYCUoczFNRfkX8DiV6LcnmVZHnA==", null, false, "99a8076f-c2d0-4fcd-a2b3-4ecb43dbdf18", false, "Administrator" });
 
             migrationBuilder.InsertData(
                 table: "TimeCategories",
@@ -297,8 +297,8 @@ namespace GameChronicle.Migrations
                     { 6, null, null, 6, 28, null, 6, 5, 1, false },
                     { 7, null, null, 7, 638654, null, 8, 5, 1, false },
                     { 8, null, null, 8, 3070, null, 9, 5, 1, false },
-                    { 9, null, null, 9, 22513, null, 5, 5, 1, false },
-                    { 10, null, null, 10, 3556, null, 7, 5, 1, false },
+                    { 9, null, null, null, 22513, null, 5, 5, 1, false },
+                    { 10, null, null, 9, 3556, null, 7, 5, 1, false },
                     { 11, null, new DateTime(2023, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 579507, null, null, 1, 1, false },
                     { 12, null, new DateTime(2023, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2454, null, null, 1, 1, false },
                     { 13, new DateTime(2023, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 58861, null, null, 5, 1, false },

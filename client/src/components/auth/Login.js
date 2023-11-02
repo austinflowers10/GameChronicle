@@ -22,9 +22,13 @@ export default function Login({ setLoggedInUser }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "500px" }}>
-      <h3>Login</h3>
-      <FormGroup>
+    <div className="page-content-container">
+      <div className="page-header-row">
+            <h1 className="page-header-text">Login</h1>
+        </div>
+        <div className="login-container">
+        <div className="login-content-container">
+      <FormGroup >
         <Label>Email</Label>
         <Input
           invalid={failedLogin}
@@ -50,12 +54,14 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
+      <Button className="game-details-option" onClick={handleSubmit}>
         Login
       </Button>
       <p>
         Not signed up? Register <Link to="/register">here</Link>
       </p>
+      </div>
+      </div>
     </div>
   );
 }

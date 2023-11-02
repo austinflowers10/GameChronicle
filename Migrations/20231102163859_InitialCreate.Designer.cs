@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GameChronicle.Migrations
 {
     [DbContext(typeof(GameChronicleDbContext))]
-    [Migration("20231030195809_InitialCreate")]
+    [Migration("20231102163859_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -249,7 +249,6 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = 9,
-                            FavoriteRanking = 9,
                             GameNumber = 22513,
                             ReplayabilityRating = 5,
                             TimeCategoryId = 5,
@@ -259,7 +258,7 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = 10,
-                            FavoriteRanking = 10,
+                            FavoriteRanking = 9,
                             GameNumber = 3556,
                             ReplayabilityRating = 7,
                             TimeCategoryId = 5,
@@ -604,7 +603,7 @@ namespace GameChronicle.Migrations
                         new
                         {
                             Id = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-                            ConcurrencyStamp = "4f4bc5d7-b45e-4906-86d5-ede401d23c25",
+                            ConcurrencyStamp = "2593f51d-9818-4240-90b8-08cc0c597d88",
                             Name = "Admin",
                             NormalizedName = "admin"
                         });
@@ -703,13 +702,13 @@ namespace GameChronicle.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b01f3896-bda3-4c21-b5c9-01b0e5b1efa7",
+                            ConcurrencyStamp = "dd75389d-d243-4b4f-904e-6867e2de2508",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEKAM1w2q94ERDp2IdPXVRvAojIDbD8saYygMkCPtiFbt/ML8Gc2OeZFgp1b5P7MXUw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBLX7NN9KUS0399o6h476PhNhyFrJHS8Y8PHbHZcYCUoczFNRfkX8DiV6LcnmVZHnA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "832059a1-8e69-4352-a2f9-35e355f99b5f",
+                            SecurityStamp = "99a8076f-c2d0-4fcd-a2b3-4ecb43dbdf18",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         });

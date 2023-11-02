@@ -24,7 +24,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
             <div className="game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
                 <div className="modal-header-row game-details">
                     <h1 className="modal-header-text">{game.gameSingle.name}</h1>
-                    <BiX className="modal-x-icon" onClick={toggle}/>
+                    <BiX className="modal-x-icon game-details-x" onClick={toggle}/>
                 </div>
             <div className="game-details-info">
                 <div className="game-details-description" dangerouslySetInnerHTML={{ __html: game.gameSingle.description }}/>
@@ -69,6 +69,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                             game={game}
                             userGames={userGames}
                             setUserGames={setUserGames}
+                            isHistory={false}
                         />
                         {
                             game.favoriteRanking === null
@@ -96,7 +97,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                                 }}>
                                     Favorite
                                 </Button>
-                            : <Button onClick={() => navigate("favorites")}>Go to Favorites</Button>
+                            : <Button className="game-details-option" onClick={() => navigate("favorites")}>Go to Favorites</Button>
                         }
                         {/* <Button onClick={() => {navigate(`/reviews/${game.id}`)}}>
                             Go To Reviews

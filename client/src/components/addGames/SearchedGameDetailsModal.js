@@ -42,14 +42,14 @@ export const SearchedGameDetailsModal = ({ game, loggedInUser, userGames, setUse
     }
 
     return <>
-        <BiPlus onClick={() => {
+        <BiPlus className="game-card-option" onClick={() => {
             getGameById(game.id)
                 .then(setFetchedGame)
                 .then(() => {toggle()})
         }}
         />
         <Modal 
-            contentClassName="searched-game-details-modal"
+            contentClassName="game-details-modal"
             isOpen={modal} 
             toggle={toggle} 
             fullscreen
@@ -57,12 +57,17 @@ export const SearchedGameDetailsModal = ({ game, loggedInUser, userGames, setUse
             {
                 fetchedGame && gameInUserGames !== undefined
                 ? <>
-                <div className="searched-game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${fetchedGame.background_image})`}}>
-                    <h1>{fetchedGame.name}<span><BiX onClick={toggle}/></span></h1>
-                    <div className="searched-game-details-description" dangerouslySetInnerHTML={{ __html: fetchedGame.description }}/>
-                    <div className="searched-game-details-footer">
-                        <div className="searched-game-details-row">
-                            <div className="searched-game-details-lists">
+                <div className="game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${fetchedGame.background_image})`}}>
+                <div className="modal-header-row game-details">
+                    <h1 className="modal-header-text">{fetchedGame.name}</h1>
+                    <BiX className="modal-x-icon game-details-x" onClick={toggle}/>
+                </div>
+                
+                <div className="game-details-info">
+                    <div className="game-details-description" dangerouslySetInnerHTML={{ __html: fetchedGame.description }}/>
+                    <div className="game-details-footer">
+                        <div className="game-details-row">
+                            <div className="game-details-lists">
                                 <h3>Developers:</h3>
                                 <ul>
                                 {
@@ -70,7 +75,7 @@ export const SearchedGameDetailsModal = ({ game, loggedInUser, userGames, setUse
                                 }
                                 </ul>
                             </div>
-                            <div className="searched-game-details-lists">
+                            <div className="game-details-lists">
                                 <h3>Platforms:</h3>
                                 <ul>
                                 {
@@ -78,7 +83,7 @@ export const SearchedGameDetailsModal = ({ game, loggedInUser, userGames, setUse
                                 }
                                 </ul>
                             </div>
-                            <div className="searched-game-details-lists">
+                            <div className="game-details-lists">
                                 <h3>Genres:</h3>
                                 <ul>
                                 {
@@ -88,19 +93,20 @@ export const SearchedGameDetailsModal = ({ game, loggedInUser, userGames, setUse
                             </div>
                                         
                         </div>
-                        <div className="searched-game-details-options">
+                        <div className="game-details-options">
                             {
                                 !gameInUserGames
-                                ? <Button onClick={handlePostUserGame}>
+                                ? <Button className="game-details-option"onClick={handlePostUserGame}>
                                     Add Game
                                 </Button>
-                                : <p>You already have this game</p>
+                                : <p className="search-alt-text">You already have this game</p>
                             }
                         </div>                    
                     </div>
                 </div>
+                </div>
                 </>
-                : <Spinner/>
+                : <Spinner  style={{margin: 'auto'}}/>
             }
         </Modal>
     </>

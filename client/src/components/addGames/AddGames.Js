@@ -19,21 +19,21 @@ export const AddGames = ({ userGames, setUserGames, loggedInUser }) => {
     )
 
     if (!userGames) {
-        return <Spinner />
+        return <Spinner  style={{margin: 'auto'}}/>
     }
     
-    return <div className="container">
-        <div className="header-row">
-            <h1>Add Games</h1>
+    return <div className="page-content-container">
+        <div className="page-header-row">
+            <h1 className="page-header-text">Add Games</h1>
         </div>
         <div className="search-container">
             <div className="search-row">
-                <input type="text" placeholder="Search over 855,000 games" value={inputState}
+                <input className="input search-input" type="text" placeholder="Search over 855,000 games" value={inputState}
                         onChange={(event) => {
                             setInputState(event.target.value)
                         }}
                 />
-                <Button disabled={!inputState} onClick={() => {
+                <Button className="search-button" disabled={!inputState} onClick={() => {
                     if (inputState) {
                         setSearchString(inputState)
                         setPageNumber(1)
@@ -53,7 +53,7 @@ export const AddGames = ({ userGames, setUserGames, loggedInUser }) => {
                     setUserGames={setUserGames}
                     userGames={userGames}
                 />
-                : <p>To see games, please search for a game by title.</p>
+                : <p className="search-alt-text">To see games, please search for a game by title.</p>
             }
             </div>
         </div>

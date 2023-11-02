@@ -16,11 +16,13 @@ export const Replayables = ({ userGames, setUserGames }) => {
     }
 
     if (!userGames) {
-        return <Spinner />
+        return <Spinner style={{margin: 'auto'}}/>
     }
 
-    return <div className="container">
-            <h1 className="home-header">Replayables</h1>
+    return <div className="page-content-container">
+        <div className="page-header-row">
+            <h1 className="page-header-text">Replayables</h1>
+        </div>
         <div className="games-rows-container">
         {
            replayableRatingsArr.map(rating => {

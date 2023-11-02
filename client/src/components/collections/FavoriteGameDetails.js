@@ -10,7 +10,7 @@ export const FavoriteGameDetailsModal = ({game, updateCategoryOnGame }) => {
     const toggle = () => setModal(!modal);
 
     return <>
-        <BiDotsHorizontalRounded onClick={toggle}/>
+        <BiDotsHorizontalRounded className="game-card-option" onClick={toggle}/>
         <Modal
             contentClassName="game-details-modal"
             isOpen={modal} 
@@ -18,7 +18,11 @@ export const FavoriteGameDetailsModal = ({game, updateCategoryOnGame }) => {
             fullscreen
         >
             <div className="game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
-                <h1>{game.gameSingle.name}<span><BiX onClick={toggle}/></span></h1>
+                <div className="modal-header-row game-details">
+                    <h1 className="modal-header-text">{game.gameSingle.name}</h1>
+                    <BiX className="modal-x-icon game-details-x" onClick={toggle}/>
+                </div>
+            <div className="game-details-info">
                 <div className="game-details-description" dangerouslySetInnerHTML={{ __html: game.gameSingle.description }}/>
                 <div className="game-details-footer">
                     <div className="game-details-row">
@@ -59,7 +63,8 @@ export const FavoriteGameDetailsModal = ({game, updateCategoryOnGame }) => {
                             toggle()
 
                        }}>Add Game to Playlist</Button> */}
-                    </div>                    
+                    </div>
+                </div>                    
                 </div>
             </div>
         </Modal>

@@ -1,5 +1,7 @@
+import { BiCheck } from "react-icons/bi";
 import { HistoryGameDetailsModal } from "./HistoryGameDetailsModal";
 import { useState, useEffect } from "react"
+import { Spinner } from "reactstrap";
 
 export const History = ({ userGames, setUserGames }) => {
     const [sortedUserGames, setSortedUserGames] = useState()
@@ -23,31 +25,40 @@ export const History = ({ userGames, setUserGames }) => {
         setUserGames(userGamesCopy)
     }
 
+    if (!userGames) {
+        return <Spinner style={{margin: 'auto'}}/>
+    }
+
     if (!sortedUserGames) {
         return null
     }
 
-    return <div className="container">
-        <h1 className="home-header">History</h1>
+    return <div className="page-content-container">
+        <div className="page-header-row">
+            <h1 className="page-header-text">History</h1>
+        </div>
         <div className="history-games-container">
         {
             sortedUserGames.map(game => {
                 return <div key={game.id} 
                         className="game-card"
-                        // style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                        style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
                         >
-                    <img className="game-image"src={game.gameSingle.background_image}/>
-                    <p className="game-title">{game.gameSingle.name}</p>
-                    <div className="game-card-options">
+                    <div className="game-card-options-row">
+                        <p className="history-game-title">{game.gameSingle.name}</p>
                         {
                             game.dateFinished
-                            ? <p>Finished: {new Date(game.dateFinished).toLocaleDateString('en-US')}</p>
+                            ? <p className="history-game-card-date"><BiCheck className="history-game-card-check"/>{new Date(game.dateFinished).toLocaleDateString('en-US')}</p>
                             : ""
                         }
-                        <HistoryGameDetailsModal
-                            game={game} 
-                            updateCategoryOnGame={updateCategoryOnGame} 
-                        />
+                        <div className="other-game-card-options">
+                            <HistoryGameDetailsModal
+                                userGames={userGames}
+                                setUserGames={setUserGames}
+                                game={game} 
+                                updateCategoryOnGame={updateCategoryOnGame} 
+                            />
+                        </div>
                     </div>
                 </div>
             })

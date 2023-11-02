@@ -3,9 +3,6 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./home/Home";
-import { getUserGamesPerUser } from "../managers/userGameManager"
-import { useEffect, useState } from "react"
-import { Spinner } from "reactstrap";
 import { AddGames } from "./addGames/AddGames";
 import { Replayables } from "./collections/Replayables";
 import { Favorites } from "./collections/Favorites";
