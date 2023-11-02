@@ -39,9 +39,14 @@
   
   /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(244, 244, 244, 0.5);
+    background-color: rgba(244, 244, 244, 0.295);
     border-radius: 10px;
+    transition: opacity 0.2s;
   }
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(244, 244, 244, 0.459);
+}
 
   /* End Scrollbar Styling */
 
