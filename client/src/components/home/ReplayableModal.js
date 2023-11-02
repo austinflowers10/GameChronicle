@@ -9,7 +9,7 @@ export const ReplayableModal = ({ game, setUserGames, userGames }) => {
     const toggle = () => setModal(!modal);
 
     return <>
-    <Button onClick={toggle}>Replayability</Button>
+    <Button className="game-details-option" onClick={toggle}>Replayability</Button>
     <Modal 
         contentClassName="replayable-modal"
         isOpen={modal}

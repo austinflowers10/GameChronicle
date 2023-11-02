@@ -16,9 +16,9 @@ export const GamesSearchResults = ({pageNumber, setPageNumber, searchedGames, lo
         {
             searchedGames.length
             ? searchedGames.map(game => (
-                <div key={game.id} className="game-card">
-                    <img className="game-image"src={game.imageURL}/>
-                    <p className="game-title">{game.name}</p>
+                <div key={game.id} className="search-game-card">
+                    <img className="search-game-image"src={game.imageURL}/>
+                    <p className="search-game-title">{game.name}</p>
                     <SearchedGameDetailsModal 
                         userGames={userGames}
                         setUserGames={setUserGames}

@@ -1,6 +1,6 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
 import { useEffect, useState } from "react"
-import { BiCheck } from "react-icons/bi";
+import { BiCheck, BiX } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
 export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategoryOnGame, buttonIsIcon}) => {
@@ -26,44 +26,47 @@ export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategor
     return <>
     {
         buttonIsIcon
-        ? <BiCheck onClick={toggleHistoryConfirmModal} />
-        : <Button onClick={toggleHistoryConfirmModal}>History</Button>
+        ? <BiCheck className="game-card-option" onClick={toggleHistoryConfirmModal} />
+        : <Button className="game-details-option" onClick={toggleHistoryConfirmModal}>History</Button>
     }
     <Modal 
     contentClassName="move-to-history-modal"
     isOpen={historyConfirmModal}
     toggle={toggleHistoryConfirmModal}
     >
-        <ModalHeader toggle={toggleHistoryConfirmModal}>Move {game.gameSingle.name} to History</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Move {game.gameSingle.name} to History</p>
+            <BiX className="modal-x-icon" onClick={toggleHistoryConfirmModal}/>
+        </div>
         <ModalBody> {/*style={{overflow: 'auto'}} */}
             <p>Are you sure you are done playing this game?</p>
-            <fieldset>
-                <label htmlFor="dateStarted">Date Started:</label>
-                <input type="date" id="dateStarted" value={newDateStarted}
+            <fieldset className="fieldset-input-row">
+                <label htmlFor="dateStarted" className="label date-label">Date Started:</label>
+                <input type="date" id="dateStarted" className="input date-input" value={newDateStarted}
                     onChange={(event) => {
                         setNewDateStarted(event.target.value)
                     }}
                 />
             </fieldset>
-            <fieldset>
-                <label htmlFor="dateFinished">Date Finished:</label>
-                <input type="date" id="dateFinished" value={newDateFinished}
+            <fieldset className="fieldset-input-row">
+                <label htmlFor="dateFinished" className="label date-label">Date Finished:</label>
+                <input type="date" id="dateFinished" className="input date-input" value={newDateFinished}
                     onChange={(event) => {
                         setNewDateFinished(event.target.value)
                     }}
                 />
             </fieldset>
-            <fieldset>
-                <label htmlFor="isCompleted">Completed to 100%?</label>
-                <input type="checkbox" id="isCompleted" checked={isChecked}
+            <fieldset className="fieldset-input-row" >
+                <label htmlFor="isCompleted" className="label checkbox-label">Completed to 100%:</label>
+                <input type="checkbox" id="isCompleted" className="checkbox" checked={isChecked}
                     onChange={(event) => {
                         setIsChecked(event.target.checked)
                     }}
                 />
             </fieldset>
         </ModalBody>
-        <ModalFooter>
-            <Button color="primary" onClick={() => {       
+        <div className="modal-footer-row">
+            <Button className="modal-footer-button confirm" onClick={() => {       
                 const gameToUpdate = {...game}
 
                 gameToUpdate.timeCategoryId = 5
@@ -88,10 +91,10 @@ export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategor
             }}>
                 Confirm
             </Button>{' '}
-            <Button color="secondary" onClick={toggleHistoryConfirmModal}>
+            <Button className="modal-footer-button cancel" onClick={toggleHistoryConfirmModal}>
                 Cancel
             </Button>
-        </ModalFooter>
+        </div>
     </Modal>
     </>
 }

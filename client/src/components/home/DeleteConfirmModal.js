@@ -15,7 +15,7 @@ export const DeleteConfirmModal = ({game, userGames, setUserGames}) => {
     },[modal])
 
     return <>
-        <Button color="danger" onClick={toggle}>Delete</Button>
+        <Button className="game-details-option delete-button" onClick={toggle}>Delete</Button>
         <Modal 
             contentClassName="delete-confirm-modal"
             isOpen={modal}
