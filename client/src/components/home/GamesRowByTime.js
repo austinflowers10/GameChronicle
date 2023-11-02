@@ -25,21 +25,21 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
     {
         sortedUserGames.length 
         ? <>
-            <h2 className="game-row-header">{timeCategory.name}</h2>
+            <h2 className="game-row-header">{timeCategory.id} - {timeCategory.name}</h2>
             <div className="game-row-items">
             {
                 sortedUserGames.map(game => {
                     return <div key={game.id} 
                             className="game-card"
-                            // style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
                             >
-                        <img className="game-image"src={game.gameSingle.background_image}/>
+                        <div className="game-card-options-row">
                         <p className="game-title">{game.gameSingle.name}</p>
                         <div className="game-card-options">
                             {/* Up Arrow */}
                             {
                                 timeCategory.id > 1
-                                ? <BiChevronUp onClick={() => {
+                                ? <BiChevronUp className="game-card-option" onClick={() => {
                                     // console.log(timeCategory.id - 1)
                                     updateCategoryOnGame(game, timeCategory.id - 1)
 
@@ -52,7 +52,7 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                             {/* Down Arrow */}
                             {
                                 timeCategory.id < 4
-                                ? <BiChevronDown onClick={() => {
+                                ? <BiChevronDown className="game-card-option" onClick={() => {
                                     // console.log(timeCategory.id + 1)
                                     updateCategoryOnGame(game, timeCategory.id + 1)
 
@@ -79,14 +79,15 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                                 setUserGames={setUserGames} 
                             />
                         </div>
+                        </div>
                     </div>
                 })
             }
             </div>
         </>
         : <> 
-            <h2 className="game-row-header">{timeCategory.name}</h2>
-            <p>No games in this category</p>
+            <h2 className="game-row-header">{timeCategory.id} - {timeCategory.name}</h2>
+            <p className="game-row-alt-text">No games in this category</p>
         </>
        
     }

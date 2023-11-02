@@ -1,6 +1,7 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollapse } from "reactstrap";
 import { putUserGame } from "../../managers/userGameManager";
 import { useNavigate } from "react-router-dom";
+import { BiX } from "react-icons/bi";
 
 export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, updateCategoryOnGame}) => {
     const navigate = useNavigate()
@@ -10,7 +11,10 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
         isOpen={modal}
         toggle={toggle}
     >
-    <ModalHeader toggle={toggle}>Add Game from History</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Add Game from History</p>
+            <BiX className="modal-x-icon" onClick={toggle}/>
+        </div>
     {
         userGames.filter(game => game.timeCategoryId === 5).length
         ? <ModalBody style={{overflow: 'auto'}}>
@@ -25,18 +29,18 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
                     .map(game => {
                     // console.log(`${game.id}.)${game.name} - ${game.timeCategoryId}`)
                     
-                    return <div key={game.id} id={`toggler--${game.id}`} className="history-game-card">
-                        <div className="history-game-card-left">
-                        <img className="game-image"src={game.gameSingle.background_image}/>
+                    return <div key={game.id} 
+                                className="game-card modal-game-card"
+                                style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                        >
+                        <div className="game-card-options-row">
                         <p className="game-title">{game.gameSingle.name}</p>
-                        </div>
-                        <UncontrolledCollapse horizontal toggler={`#toggler--${game.id}`}>
-                        <div className="history-game-card-right">
+                        <div className="game-card-options">
                             {
                             timeCategories.map(timeCategory => {
                                 return timeCategory.id !== 5 &&
-                                <Button key={timeCategory.id} 
-                                    className="history-modal-category-button"
+                                <div key={timeCategory.id} 
+                                    className="game-card-option"
                                     onClick={() => {
                                         updateCategoryOnGame(game, timeCategory.id)
 
@@ -44,12 +48,14 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
                                         gameToUpdate.timeCategoryId = timeCategory.id
                                         putUserGame(gameToUpdate)
                                     }}
-                                >{timeCategory.name}</Button>
+                                >
+                                    <span className="game-card-option-numbers">{timeCategory.id}</span>
+                                </div>
                             }) 
                             }
                         </div>
-                        </UncontrolledCollapse> 
                     </div>
+                </div>
                 })
             }
         </ModalBody>
@@ -58,7 +64,6 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
             <Button onClick={() => navigate("addgames")}>Go to Add Games Page</Button>
         </ModalBody>
     }
-        <ModalFooter></ModalFooter>
     </Modal>
 </>
 }

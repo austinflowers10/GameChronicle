@@ -58,11 +58,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser ,userGa
                 }
             />
         {/* </Route> */}
-        <Route
+        {/* <Route
           path="reviews"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-                {/* <Reviews userGames={userGames}/> */}
+                <Reviews userGames={userGames}/>
             </AuthorizedRoute>
           }
         >
@@ -70,11 +70,11 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser ,userGa
                 path=":id"
                 element={
                     <AuthorizedRoute loggedInUser={loggedInUser}>
-                    {/* <ReviewsForGame userGames={userGames}/> */}
+                    <ReviewsForGame userGames={userGames}/>
                     </AuthorizedRoute>
                 }
             />
-        </Route>
+        </Route> */}
         <Route
           path="addgames"
           element={

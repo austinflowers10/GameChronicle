@@ -2,48 +2,6 @@
     width: 100%;
 }
 
-.game-details-background {
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)); */
-    color: white;    
-}
-
-.game-details-description {
-    overflow: auto;
-    height: 60%;
-    width: 30%;
-}
-.game-details-footer {
-    height: 30%;
-    width: 100%;
-}
-
-.game-details-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-/* 
-.history-game-details-lists {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 50%;
-
-} */
-
-.game-details-options {
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
 .top-ten-container {
     display: flex;
     flex-wrap: wrap;

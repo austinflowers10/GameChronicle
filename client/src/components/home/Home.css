@@ -1,94 +1,286 @@
-.container {
-    margin: 0;
-    padding: 0;
+/* Page Header ------------------------------------- */
+.page-header-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.page-header-text {
+    font-family: 'PlayStation', sans-serif;
+    font-size: 32px;
+    margin: auto 0;
+    text-shadow: -2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.page-header-icon {
+    font-size: 30px;
+    border-radius: 6px;
+    /* border: solid 2px rgb(244, 244, 244); */
+    margin-left: auto;
+    cursor: pointer;
+    transition: background-color 0.2s, font-size 0.2s;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.page-header-icon:hover {
+    background-color: rgb(73, 0, 128);
+    font-size: 32px;
+}
+
+/* End of Page Header -------------------------------- */
+
+/* Game Rows ----------------------------------------- */
+
+.games-rows-container {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.header-row {
-    display: flex;
-}
-
-.add-from-history-modal {
-    max-height: 93vh;
-    width: 50vw;
-}
-
-.history-game-card {
-    display: flex;
-    flex-direction: row;
-}
-.history-game-card-left {
-    width: 50%;
-}
-.history-game-card-right {
-    width: 50%;
-    flex-wrap: none;
-}
-
-.history-modal-category-button {
-    width: 100%;
-    margin: 2%;
-}
-.header-icon {
-    font-size: 40px;
 }
 
 .game-row-container {
     display: flex;
     flex-direction: column;
-    margin: 10px 0px;
+    max-width: calc(100% - 40px);
+}
+
+.game-row-header {
+    font-size: 30px;
+    text-shadow: -2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 .game-row-items {
     display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 14vw;
+}
+
+.game-row-items::-webkit-scrollbar-track {
+    background: none;
+}
+
+.game-row-alt-text {
+    font-size: 18px;
 }
 
 .game-card {
-    height: auto;
+    min-width: 21.3333vw; /* Adjust the width based on viewport width */
+    width: 21.3333vw;
+    height: 12vw; 
     margin: 10px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    border-radius: 7px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    transition: box-shadow 0.2s
 }
+
+.game-card:hover {
+    box-shadow: 0 0 2px 2px rgb(244, 244, 244);
+}
+
+.game-card:hover .game-card-options-row {
+    padding-top: 20px;
+    height: 55px;
+}
+
 .game-title {
     margin: 0px;
+    margin-right: auto;
+    line-height: 35px; 
 }
 
-.game-image {
-    width: 90%;
-    height: auto;
-    object-fit: cover;
-
+.game-card-options-row {
+    width: 100%;
+    display: flex;
+    align-self: end;
+    height: 35px;
+    font-size: 18px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+    box-sizing: border-box;
+    padding: 5px 10px 0px 10px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    transition: 0.2s, padding 0.2s
 }
 
-.home-game-details-background {
+.game-card-options {
+    font-size: 20px;
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.game-card-option {
+    border-radius: 6px;
+    transition: 0.2s, background-color 0.2s;
+    margin: 0 2px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+.game-card-option:hover {
+    background-color: rgb(73, 0, 128);
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    
+}
+
+/* End of Game Rows --------------------------------- */
+
+
+/* Modals ------------------------------------------- */
+
+/* Add From History Modal*/
+.add-from-history-modal {
+    max-height: 93vh;
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: none;
+}
+
+.modal-header-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.modal-header-text {
+    font-size: 32px;
+    margin: auto 0;
+    font-family: 'PlayStation', sans-serif;
+}
+
+.modal-x-icon {
+    font-size: 30px;
+    border-radius: 6px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: background-color 0.2s, font-size 0.2s;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.modal-x-icon:hover {
+    background-color: rgb(73, 0, 128);
+    font-size: 32px;
+}
+
+.game-card.modal-game-card {
+    margin: 10px auto;
+}
+
+/* End of Add From History Modal----------------------- */
+
+
+/* Move to History Modal --------------------------------- */
+.move-to-history-modal {
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+    font-size: 20px;
+}
+
+.fieldset-input-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;    
+}
+
+.input {
+    border-radius: 6px;
+    border: 2px solid black;
+    background-color: rgb(244, 244, 244);
+    box-sizing: border-box;
+    padding: 2px 10px;   
+    color: black 
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-footer-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-footer-button {
+    font-size: 20px;
+    height: 40px;
+    border: none;
+    transition: box-shadow 0.2s;
+    margin-right: 5px;
+}
+
+.modal-footer-button:hover {
+    box-shadow: 0 0 2px 2px rgb(244, 244, 244);
+}
+
+.modal-footer-button.confirm {
+    background-color: rgb(73, 0, 128);
+}
+
+.modal-footer-button.cancel {
+    background-color: rgb(53, 53, 53)
+}
+
+/* End Move to History Modal----------------------------- */
+
+
+/* Home Game Details Modal ----------------------------- */
+.game-details-background {
     height: 100%;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    /* background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)); */
-    color: white;    
+    background-position: center; 
 }
 
-.home-game-details-description {
+.game-details-info {
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+}
+
+.modal-header-row.game-details {
+    padding: 30px;
+}
+.game-details-description {
     overflow: auto;
-    height: 60%;
+    height: 100%;
     width: 30%;
-}
-.home-game-details-footer {
-    height: 30%;
-    width: 100%;
+    margin-left: 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    box-sizing: content-box;
 }
 
-.home-game-details-row {
+.game-details-description::-webkit-scrollbar-track {
+    background: none;
+}
+
+.game-details-footer {
+    height: 25%;
+    width: 40%;
+    margin-top: auto;
+}
+
+.game-details-row {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-}
+    font-size: 18px;
+    
+} 
 /* 
-.home-game-details-lists {
+.game-details-lists {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -96,10 +288,30 @@
 
 } */
 
-.home-game-details-options {
+.game-details-options {
     display: flex;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 100%;
 }
+
+.game-details-option {
+    font-size: 20px;
+    height: 40px;
+    border: none;
+    transition: box-shadow 0.2s;
+    margin-right: 5px;
+    background-color: rgb(73, 0, 128) !important;
+}
+
+.game-details-option.delete-button {
+    background-color: rgb(156, 0, 0) !important;
+}
+
+.game-details-option:hover {
+    box-shadow: 0 0 2px 2px rgb(244, 244, 244);
+}
+
+/* End of Home Game Details Modal ------------------------ */
+

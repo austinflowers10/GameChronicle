@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { BiListPlus } from "react-icons/bi";
+import { BiBookAdd, BiListPlus } from "react-icons/bi";
 import "./Home.css"
 import { GamesRowByTime } from "./GamesRowByTime"
 import { getTimeCategories } from "../../managers/timeCategoryManager"
@@ -37,10 +37,10 @@ export const Home = ({ userGames, setUserGames }) => {
     }
     // console.log(userGames.filter(game => game.timeCategoryId === 5).length)
 
-    return <div className="container">
-        <div className="header-row">
-            <h1 className="home-header">Playlist</h1>
-            <BiListPlus className="header-icon" onClick={toggle}/> 
+    return <div className="page-content-container">
+        <div className="page-header-row">
+            <h1 className="page-header-text">Playlist</h1>
+            <BiBookAdd className="page-header-icon" onClick={toggle}/> 
             <AddFromHistoryModal 
                 modal={modal} 
                 toggle={toggle} 

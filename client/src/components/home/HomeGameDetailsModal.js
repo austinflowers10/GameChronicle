@@ -14,19 +14,23 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
     const toggle = () => setModal(!modal);
 
     return <>
-        <BiDotsHorizontalRounded onClick={toggle}/>
+        <BiDotsHorizontalRounded className="game-card-option" onClick={toggle}/>
         <Modal 
             contentClassName="home-game-details-modal"
             isOpen={modal} 
             toggle={toggle} 
             fullscreen
         >
-            <div className="home-game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
-                <h1>{game.gameSingle.name}<span><BiX onClick={toggle}/></span></h1>
-                <div className="home-game-details-description" dangerouslySetInnerHTML={{ __html: game.gameSingle.description }}/>
-                <div className="home-game-details-footer">
-                    <div className="home-game-details-row">
-                        <div className="home-game-details-lists">
+            <div className="game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
+                <div className="modal-header-row game-details">
+                    <h1 className="modal-header-text">{game.gameSingle.name}</h1>
+                    <BiX className="modal-x-icon" onClick={toggle}/>
+                </div>
+            <div className="game-details-info">
+                <div className="game-details-description" dangerouslySetInnerHTML={{ __html: game.gameSingle.description }}/>
+                <div className="game-details-footer">
+                    <div className="game-details-row">
+                        <div className="game-details-lists">
                             <h3>Developers:</h3>
                             <ul>
                             {
@@ -34,7 +38,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                             }
                             </ul>
                         </div>
-                        <div className="home-game-details-lists">
+                        <div className="game-details-lists">
                             <h3>Platforms:</h3>
                             <ul>
                             {
@@ -42,7 +46,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                             }
                             </ul>
                         </div>
-                        <div className="home-game-details-lists">
+                        <div className="game-details-lists">
                             <h3>Genres:</h3>
                             <ul>
                             {
@@ -52,7 +56,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                         </div>
                                        
                     </div>
-                    <div className="home-game-details-options">
+                    <div className="game-details-options">
                         <ReplayableModal
                             putUserGame={putUserGame}
                             game={game}
@@ -68,7 +72,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                         />
                         {
                             game.favoriteRanking === null
-                            ? <Button onClick={() => {
+                            ? <Button className="game-details-option" onClick={() => {
                                 const favorites = userGames.filter(ug => ug.favoriteRanking)
 
                                 const gameWithHighestFavoriteRank = favorites.reduce((prev, current) => {
@@ -104,6 +108,7 @@ export const HomeGameDetailsModal = ({game, userGames, setUserGames }) => {
                         />
                     </div>                    
                 </div>
+            </div>
             </div>
         </Modal>
     </>

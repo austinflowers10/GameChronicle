@@ -20,17 +20,17 @@
     width: 100%
 }
 
-.game-card {
+.search-game-card {
     height: auto;
     width: 20%;
     margin: 10px;
     border: 2px solid black;
 }
-.game-title {
+.search-game-title {
     margin: 0px;
 }
 
-.game-image {
+.search-game-image {
     width: 80%;
     height: auto;
     object-fit: cover;
