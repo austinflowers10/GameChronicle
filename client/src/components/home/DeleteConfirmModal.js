@@ -1,6 +1,7 @@
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap"
 import { useEffect, useState } from "react";
 import { deleteUserGame } from "../../managers/userGameManager";
+import { BiX } from "react-icons/bi";
 
 export const DeleteConfirmModal = ({game, userGames, setUserGames}) => {
     const [modal, setModal] = useState(false)
@@ -21,20 +22,23 @@ export const DeleteConfirmModal = ({game, userGames, setUserGames}) => {
             isOpen={modal}
             toggle={toggle}
         >
-        <ModalHeader toggle={toggle}>Delete Warning</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Delete Warning</p>
+            <BiX className="modal-x-icon" onClick={toggle}/>
+        </div>
             <ModalBody>
-                <p>This action will completely delete this game with all of its related information. Are you sure?</p>
-                <fieldset>
+                <p className="modal-prompt-text">This action will completely delete this game with all of its related information. Are you sure?</p>
+                <fieldset className="fieldset-input-row">
                     <label htmlFor="deleteCheckbox">I understand</label>
-                    <input type="checkbox" id="deleteCheckbox" checked={isChecked}
+                    <input className="checkbox" type="checkbox" id="deleteCheckbox" checked={isChecked}
                         onChange={(event) => {
                             setIsChecked(event.target.checked)
                         }}
                     />
                 </fieldset>
             </ModalBody>
-            <ModalFooter>
-                <Button disabled={!isChecked} color="danger" onClick={() => {
+            <div className="modal-footer-row">
+                <Button className="modal-footer-button delete-button" disabled={!isChecked} onClick={() => {
                     deleteUserGame(game.id)
 
                     const filteredUserGames = userGames.filter(ug => ug.id !== game.id)
@@ -44,10 +48,10 @@ export const DeleteConfirmModal = ({game, userGames, setUserGames}) => {
                 }}>
                     Confirm Delete
                 </Button>{' '}
-                <Button color="secondary" onClick={toggle}>
+                <Button className="modal-footer-button cancel" onClick={toggle}>
                     Cancel
                 </Button>
-            </ModalFooter>
+            </div>
         </Modal>
     </>
 }

@@ -1,6 +1,7 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import { useState, useEffect } from "react"
 import { putUserGame } from "../../managers/userGameManager";
+import { BiX } from "react-icons/bi";
 
 export const ReplayableModal = ({ game, setUserGames, userGames }) => {
     const [modal, setModal] = useState(false)
@@ -15,30 +16,33 @@ export const ReplayableModal = ({ game, setUserGames, userGames }) => {
         isOpen={modal}
         toggle={toggle}
     >
-    <ModalHeader toggle={toggle}>Change or Add Replayability Rating</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Change Replayability Rating</p>
+            <BiX className="modal-x-icon" onClick={toggle}/>
+        </div>
         <ModalBody>
             {
                 game.replayabilityRating
                 ? <p>Current Replayability Rating: {game.replayabilityRating}</p>
-                : <p>How likely are you to replay this game on a scale of 1 to 10?</p>
+                : <p>How likely are you to replay this game?</p>
             }
-            <fieldset>
+            <fieldset className="fieldset-input-row">
                 <label htmlFor="replayabilityRating">
                 {
                     game.replayabilityRating
                     ? "Change Rating:" 
-                    : "Add Rating"
+                    : "Add Rating:"
                 }
                 </label>
-                <input type="number" id="replayabilityRating" min={1} max={10} value={newRating}
+                <input className="input" type="number" id="replayabilityRating" min={1} max={10} value={newRating}
                     onChange={(event) => {
                         setNewRating(parseInt(event.target.value))
                     }}
                 />
             </fieldset>
         </ModalBody>
-        <ModalFooter>
-            <Button disabled={!newRating} color="primary" onClick={() => {
+        <div className="modal-footer-row">
+            <Button className="modal-footer-button confirm" disabled={!newRating} onClick={() => {
                 if (newRating) {
                     const gameToUpdate = {...game}
                     gameToUpdate.replayabilityRating = newRating
@@ -52,10 +56,10 @@ export const ReplayableModal = ({ game, setUserGames, userGames }) => {
             }}>
                 Confirm
             </Button>{' '}
-            <Button color="secondary" onClick={toggle}>
+            <Button className="modal-footer-button cancel" onClick={toggle}>
                 Cancel
             </Button>
-        </ModalFooter>
+        </div>
     </Modal>
 </>
 }

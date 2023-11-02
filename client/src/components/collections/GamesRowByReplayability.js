@@ -30,15 +30,15 @@ export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityO
                 sortedUserGames.map(game => {
                     return <div key={game.id} 
                             className="game-card"
-                            // style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
                             >
-                        <img className="game-image"src={game.gameSingle.background_image}/>
-                        <p className="game-title">{game.gameSingle.name}</p>
+                        <div className="game-card-options-row">
+                        <p className="game-title other">{game.gameSingle.name}</p>
                         <div className="game-card-options">
                             {/* Up Arrow */}
                             {
                                 rating < 10
-                                ? <BiChevronUp onClick={() => {
+                                ? <BiChevronUp className="game-card-option" onClick={() => {
                                     // console.log(timeCategory.id - 1)
                                     updateReplayabilityOnGame(game, rating + 1)
 
@@ -51,7 +51,7 @@ export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityO
                             {/* Down Arrow */}
                             {
                                 rating > 1
-                                ? <BiChevronDown onClick={() => {
+                                ? <BiChevronDown className="game-card-option" onClick={() => {
                                     // console.log(timeCategory.id + 1)
                                     updateReplayabilityOnGame(game, rating - 1)
 
@@ -64,6 +64,7 @@ export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityO
                             {/* X Button with Modal */}
                             <RemoveReplayableModal game={game} updateReplayabilityOnGame={updateReplayabilityOnGame}/>
                         </div>
+                        </div>                        
                     </div>
                 })
             }
@@ -71,7 +72,7 @@ export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityO
         </>
         : <>
             <h2 className="game-row-header">{rating}{rating === 10 ? " (Highest)": ""}</h2>
-            <p>No games with this rating</p>
+            <p className="game-row-alt-text">No games with this rating</p>
         </>
     }
     </div>

@@ -45,6 +45,15 @@
 
   /* End Scrollbar Styling */
 
+.login-content-container {
+    width: 25vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+.login-content {
+    width: 100%;
+}
+
 .navbar-placeholder {
     width: 78px;
     height: 100vh;

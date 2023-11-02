@@ -29,11 +29,11 @@ export const Home = ({ userGames, setUserGames }) => {
     )
 
     if (!timeCategories) {
-        return <Spinner />
+        return <Spinner style={{margin: 'auto'}} />
     }
 
     if (!userGames) {
-        return <Spinner />
+        return <Spinner style={{margin: 'auto'}}/>
     }
     // console.log(userGames.filter(game => game.timeCategoryId === 5).length)
 
@@ -63,8 +63,8 @@ export const Home = ({ userGames, setUserGames }) => {
                 />
             })
             : <div>
-                <p>You currently have no games</p>
-                <Button onClick={() => navigate("addgames")}>Add Games</Button>
+                <p className="game-row-alt-text" >You currently have no games</p>
+                <Button className="game-details-option" onClick={() => navigate("addgames")}>Add Games</Button>
             </div>
         }
         </div>

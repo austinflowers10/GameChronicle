@@ -8,7 +8,9 @@ import { SearchedGameDetailsModal } from "./SearchedGameDetailsModal";
 export const GamesSearchResults = ({pageNumber, setPageNumber, searchedGames, loggedInUser, setUserGames, userGames, handlePostUserGame}) => {
 
     if (!searchedGames) {
-        return <Spinner/>
+        return <div className="games-search-results">
+            <Spinner  style={{margin: 'auto'}}/>
+        </div>
     }
 
     return <>
@@ -16,19 +18,25 @@ export const GamesSearchResults = ({pageNumber, setPageNumber, searchedGames, lo
         {
             searchedGames.length
             ? searchedGames.map(game => (
-                <div key={game.id} className="search-game-card">
-                    <img className="search-game-image"src={game.imageURL}/>
-                    <p className="search-game-title">{game.name}</p>
-                    <SearchedGameDetailsModal 
-                        userGames={userGames}
-                        setUserGames={setUserGames}
-                        game={game}
-                        loggedInUser={loggedInUser}
-                        handlePostUserGame={handlePostUserGame}
-                    />
+                <div key={game.id} 
+                            className="game-card"
+                            style={{backgroundImage : `url(${game.imageURL})`}}
+                            >
+                        <div className="game-card-options-row">
+                            <p className="game-title">{game.name}</p>
+                            <div className="other-game-card-options">
+                                <SearchedGameDetailsModal 
+                                    userGames={userGames}
+                                    setUserGames={setUserGames}
+                                    game={game}
+                                    loggedInUser={loggedInUser}
+                                    handlePostUserGame={handlePostUserGame}
+                                />
+                            </div>
+                        </div>
                 </div>
             ))
-            : <p>No games found, please make your search more specific.</p>
+            : <p className="search-alt-text">No games found, please make your search more specific.</p>
         }
         </div>
 

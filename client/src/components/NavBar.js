@@ -11,7 +11,7 @@ NavbarBrand,
 NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
-import { BiChevronRight, BiLogOut, BiBookBookmark, BiStar, BiRevision, BiPlus} from "react-icons/bi";
+import { BiChevronRight, BiLogOut, BiBookBookmark, BiStar, BiRevision, BiPlus, BiLogIn} from "react-icons/bi";
 import { LuGamepad2 } from "react-icons/lu";
 import "../index.css"
 
@@ -93,13 +93,14 @@ return (<>
             </div>
         </>
         ) : (
-        <Nav navbar>
-            <NavItem>
-            <NavLink tag={RRNavLink} to="/login">
-                <Button color="primary">Login</Button>
-            </NavLink>
-            </NavItem>
-        </Nav>
+            <div>
+                <div className="navbar__item">
+                    <Link className="nav-link-custom" to="/">
+                        <BiLogIn className="nav-link-icon"/>
+                        <span className="nav-link-text">Login</span>
+                    </Link>
+                </div>    
+            </div>      
         )}
         </div>
     </nav>

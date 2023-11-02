@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { BiCheck, BiX } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 
-export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategoryOnGame, buttonIsIcon}) => {
+export const MoveToHistoryModal = ({game, setUserGames, userGames, buttonIsIcon, isHistory}) => {
     const [historyConfirmModal, setHistoryConfirmModal] = useState(false)
     const [newDateStarted, setNewDateStarted] = useState(null)
     const [newDateFinished, setNewDateFinished] = useState(null)
@@ -35,11 +35,20 @@ export const MoveToHistoryModal = ({game, setUserGames, userGames, updateCategor
     toggle={toggleHistoryConfirmModal}
     >
         <div className="modal-header-row">
-            <p className="modal-header-text">Move {game.gameSingle.name} to History</p>
+            {
+                !isHistory
+                ? <p className="modal-header-text">Move Game to History</p>
+                : <p className="modal-header-text">Edit Finished Game Info</p>
+            }
             <BiX className="modal-x-icon" onClick={toggleHistoryConfirmModal}/>
         </div>
         <ModalBody> {/*style={{overflow: 'auto'}} */}
-            <p>Are you sure you are done playing this game?</p>
+        {
+            !isHistory
+            ? <p>Are you sure you are done playing this game?</p>
+            : ""
+        }
+            
             <fieldset className="fieldset-input-row">
                 <label htmlFor="dateStarted" className="label date-label">Date Started:</label>
                 <input type="date" id="dateStarted" className="input date-input" value={newDateStarted}

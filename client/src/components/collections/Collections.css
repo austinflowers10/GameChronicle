@@ -2,12 +2,130 @@
     width: 100%;
 }
 
-.top-ten-container {
+/* Switch Favorites Modal ------------------------------- */
+
+.switch-favorites-modal {
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+    font-size: 20px;
+}
+
+.input.select {
+    width: 60%;
+}
+
+.dropdown-option {
+    color: black;
+    background-color: rgb(244, 244, 244);
+}
+
+.modal-switch-icon {
+    margin: 10px auto;
     display: flex;
+    justify-self: center;
+    font-size: 30px;
+
+}
+
+/* End Switch Favorites Modal --------------------------- */
+
+/* Add Top Ten Modal ------------------------------------ */
+.add-top-ten-modal {
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* End Add Top Ten Modal -------------------------------- */
+
+/* Add New Favorite Modal ------------------------------------ */
+.add-new-favorite-modal {
+    max-height: 93vh;
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+}
+
+
+/* End Add New Favorite Modal -------------------------------- */
+
+.favorites-container  {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+}
+
+.favorite-rank {
+    font-family: 'PlayStation', sans-serif;
+    font-size: 32px;
+    margin-bottom: auto;
+    margin-left: 10px;
+    text-shadow: -2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.other-favorites-header-icons {
+    margin-left: auto;
+    display: flex;
+    align-content: center;
+}
+
+.other-favorites {
+    margin-left: 5px;
 }
 
 .add-new-favorite-modal {
     max-height: 93vh;
-    width: 50vw;
 }
+
+.history-games-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.other-game-card-options {
+    font-size: 20px;
+    max-width: 30%;
+    min-width: 10%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    align-self: center;
+}
+
+.history-game-title {
+    margin: 0px;
+    margin-right: auto;
+    line-height: 35px; 
+    max-width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.game-card:hover .history-game-title {
+    white-space: normal;
+    overflow: visible;
+}
+
+.history-game-card-date {
+    line-height: 35px; 
+    width: 30%;
+    margin: 0;
+}
+
+.history-game-card-check {
+    margin: 0 2px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+

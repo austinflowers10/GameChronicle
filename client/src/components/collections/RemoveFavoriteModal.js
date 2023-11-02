@@ -9,7 +9,7 @@ export const RemoveFavoriteModal = ({game, setUserGames, userGames}) => {
     const toggle = () => setModal(!modal);
 
     return <>
-        <BiX onClick={toggle}/>
+        <BiX className="game-card-option" onClick={toggle}/>
         <Modal 
             contentClassName="remove-confirm-modal"
             isOpen={modal}

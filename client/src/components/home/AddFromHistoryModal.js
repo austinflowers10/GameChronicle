@@ -11,7 +11,7 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
         isOpen={modal}
         toggle={toggle}
     >
-        <div className="modal-header-row">
+    <div className="modal-header-row">
             <p className="modal-header-text">Add Game from History</p>
             <BiX className="modal-x-icon" onClick={toggle}/>
         </div>
@@ -60,8 +60,8 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
             }
         </ModalBody>
         : <ModalBody style={{overflow: 'auto'}}>
-            <p>You currently have no games in History</p>
-            <Button onClick={() => navigate("addgames")}>Go to Add Games Page</Button>
+            <p className="game-row-alt-text">You currently have no games in History</p>
+            <Button className="modal-footer-button confirm" onClick={() => navigate("addgames")}>Go to Add Games Page</Button>
         </ModalBody>
     }
     </Modal>

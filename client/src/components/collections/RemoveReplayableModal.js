@@ -9,18 +9,21 @@ export const RemoveReplayableModal = ({game, updateReplayabilityOnGame}) => {
     const toggle = () => setModal(!modal);
 
     return <>
-        <BiX onClick={toggle}/>
+        <BiX className="game-card-option" onClick={toggle}/>
         <Modal 
             contentClassName="remove-confirm-modal"
             isOpen={modal}
             toggle={toggle}
         >
-        <ModalHeader toggle={toggle}>Remove Replayable</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Remove Replayable</p>
+            <BiX className="modal-x-icon" onClick={toggle}/>
+        </div>
             <ModalBody>
-                <p>Are you sure you want to remove {game.gameSingle.name} from Replayables?</p>
+                <p className="modal-prompt-text">Are you sure you want to remove {game.gameSingle.name} from Replayables?</p>
             </ModalBody>
-            <ModalFooter>
-                <Button color="danger" onClick={() => {
+            <div className="modal-footer-row">
+                <Button className="modal-footer-button delete-button" onClick={() => {
                     updateReplayabilityOnGame(game, null)
 
                     const gameToUpdate = {...game}
@@ -31,10 +34,10 @@ export const RemoveReplayableModal = ({game, updateReplayabilityOnGame}) => {
                 }}>
                     Remove
                 </Button>{' '}
-                <Button color="secondary" onClick={toggle}>
+                <Button className="modal-footer-button cancel" onClick={toggle}>
                     Cancel
                 </Button>
-            </ModalFooter>
+            </div>
         </Modal>
     </>
 }

@@ -31,7 +31,7 @@ public class GameApiService
     public async Task<GameResultsObject> GetSearchedGames(int page, string search)
     {
         
-        var uri = $"https://api.rawg.io/api/games?key={_configuration["gameAPIKey"]}&search_precise=true&exclude_additions=true&page_size=20";
+        var uri = $"https://api.rawg.io/api/games?key={_configuration["gameAPIKey"]}&search_precise=true&exclude_additions=true&parent_platforms=2,3,7&page_size=20";
 
         if (search != null) 
         {
