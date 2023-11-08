@@ -23,7 +23,7 @@ export const Favorites = ({ userGames, setUserGames }) => {
     )
 
     if (!userGames || !favorites) {
-        return null
+        return <Spinner style={{margin: 'auto'}}/>
     }
 
     return <div className="page-content-container">

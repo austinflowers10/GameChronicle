@@ -15,12 +15,15 @@ export const RemoveFavoriteModal = ({game, setUserGames, userGames}) => {
             isOpen={modal}
             toggle={toggle}
         >
-        <ModalHeader toggle={toggle}>Remove Favorite</ModalHeader>
+        <div className="modal-header-row">
+            <p className="modal-header-text">Remove Favorite</p>
+            <BiX className="modal-x-icon" onClick={toggle}/>
+        </div>
             <ModalBody>
-                <p>Are you sure you want to remove {game.gameSingle.name} from Favorites?</p>
+                <p className="modal-prompt-text">Are you sure you want to remove {game.gameSingle.name} from Favorites?</p>
             </ModalBody>
-            <ModalFooter>
-                <Button color="danger" onClick={() => {
+            <div className="modal-footer-row">
+                <Button className="modal-footer-button delete-button" onClick={() => {
                     const gameToUpdate = {...game}
                     gameToUpdate.favoriteRanking = null
             
@@ -35,10 +38,10 @@ export const RemoveFavoriteModal = ({game, setUserGames, userGames}) => {
                 }}>
                     Remove
                 </Button>{' '}
-                <Button color="secondary" onClick={toggle}>
+                <Button className="modal-footer-button cancel" onClick={toggle}>
                     Cancel
                 </Button>
-            </ModalFooter>
+            </div>
         </Modal>
     </>
 }

@@ -45,8 +45,14 @@
     padding: 20px;
 }
 
-
 /* End Add New Favorite Modal -------------------------------- */
+
+.remove-confirm-modal {
+    max-height: 93vh;
+    background-color: rgba(20, 20, 20, 0.751);
+    padding: 20px;
+}
+
 
 .favorites-container  {
     margin: 0;
