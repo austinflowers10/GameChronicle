@@ -1,5 +1,5 @@
 # Game Chronicle
-**NSS Server Side Capstone 2023**
+**NSS Full Stack Capstone 2023**
 
 Gamers play dozens of games every year, many of which can be forgotten. Game Chronicle gives gamers a way to track all the games they have played or intend to play. Users can search for games and view details, add, edit, and delete them. Users can then enter user-specific information about each game in order to organize them into different categories. Game Chronicle is a full-stack application made with C#, ASP.NET, PostgreSQL, ReactJs. Styling is done with mostly vanilla CSS and some Bootstrap.
 
