@@ -5,9 +5,9 @@ Gamers play dozens of games every year, many of which can be forgotten. Game Chr
 
 App Features: 
 
-**- Collapsible side bar**
+- **Collapsible side bar**
 
-**- Playlist Page**
+- **Playlist Page**
     - Users can view games they are currently playing or intend to play in the future. New games are added from the Add Games Page, or from History.
     - Users can organize games into categories which represent general timeframes: In Progress, Up Next, Later, and Eventually
     - Book/Plus Icon (top right) - shows a menu for adding a game from History, using numbered buttons to add a game into the corresponding category
@@ -22,11 +22,11 @@ App Features:
             - Favorite/Go To Favorites: either Favorite a game, or navigate to the Favorites Page
             - Delete: fully delete a game from the user's account along with all user-indicated information
 
-**- Add Games Page**
+- **Add Games Page**
     - Use the search bar to search a game by title
     - Plus Icon to show the Game Details View, with an Add Game Button which will add the game to the "Eventually" category of the Playlist Page
 
-**- Favorites Page**
+- **Favorites Page**
     - View games indicated as Top Ten Favorites 
     - View games under Other Favorites, favorites not designated as a Top Ten game
     - Switch Icon (top right): shows a menu to switch out a Top Ten game with an Other Favorites game
@@ -36,13 +36,13 @@ App Features:
         - Ellipses Icon: shows the Game Details View
         - "X" Icon (Other Favorites games): unfavorites a game
 
-**- Replayables Page**
+- **Replayables Page**
     - View games indicated with a Replayability Rating, with 10 as the highest rating 
     - Game Cards:
         - Up/Down Arrow Icons: change a game's Replayability Rating up or down
         - "X" Icon: removes a game from Replayables
 
-**- History**
+- **History**
     - View all games that have been moved to History, sorted by most recently finished
     - Game Cards: 
         - View the date finished which was indicated by the user
