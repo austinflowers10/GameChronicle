@@ -79,13 +79,18 @@ export const MoveToHistoryModal = ({game, setUserGames, userGames, buttonIsIcon,
                 const gameToUpdate = {...game}
 
                 gameToUpdate.timeCategoryId = 5
-                if (newDateStarted) {
+
+                if (newDateStarted === "") {
+                    gameToUpdate.dateStarted = null
+                } else {
                     gameToUpdate.dateStarted = `${newDateStarted}T00:00:00`
                 }
-                if (newDateFinished) {
+                if (newDateFinished === "") {
+                    gameToUpdate.dateFinished = null
+                } else {
                     gameToUpdate.dateFinished = `${newDateFinished}T00:00:00`
                 }
-                if (isChecked == true) {
+                if (isChecked === true) {
                     gameToUpdate.isCompleted = true
                 } else if (isChecked === false) {
                     gameToUpdate.isCompleted = false
