@@ -17,7 +17,7 @@ export const FavoriteGameDetailsModal = ({game, updateCategoryOnGame }) => {
             toggle={toggle} 
             fullscreen
         >
-            <div className="game-details-background" style={{backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
+            <div className="game-details-background" style={{backgroundColor: "rgb(40, 0, 71)", backgroundImage : `linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1)), url(${game.gameSingle.background_image})`}}>
                 <div className="modal-header-row game-details">
                     <h1 className="modal-header-text">{game.gameSingle.name}</h1>
                     <BiX className="modal-x-icon game-details-x" onClick={toggle}/>
