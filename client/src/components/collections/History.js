@@ -2,6 +2,7 @@ import { BiCheck } from "react-icons/bi";
 import { HistoryGameDetailsModal } from "./HistoryGameDetailsModal";
 import { useState, useEffect } from "react"
 import { Spinner } from "reactstrap";
+import imageOff from "../../images/image-off.svg"
 
 export const History = ({ userGames, setUserGames }) => {
     const [sortedUserGames, setSortedUserGames] = useState()
@@ -42,7 +43,14 @@ export const History = ({ userGames, setUserGames }) => {
             sortedUserGames.map(game => {
                 return <div key={game.id} 
                         className="game-card"
-                        style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                        style={
+                            game.gameSingle.background_image
+                            ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                            : {
+                                backgroundImage: `url(${imageOff})`,
+                                backgroundSize: "100px"
+                            }
+                        }
                         >
                     <div className="game-card-options-row">
                         <p className="history-game-title">{game.gameSingle.name}</p>

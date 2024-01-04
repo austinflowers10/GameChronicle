@@ -3,6 +3,7 @@ import { putUserGame } from "../../managers/userGameManager";
 import { useNavigate } from "react-router-dom";
 import { BiPlus, BiX } from "react-icons/bi";
 import { useState } from "react";
+import imageOff from "../../images/image-off.svg"
 
 export const AddNewFavoriteModal = ({ userGames, setUserGames, favorites}) => {
     const [modal, setModal] = useState(false)
@@ -33,7 +34,14 @@ export const AddNewFavoriteModal = ({ userGames, setUserGames, favorites}) => {
                     
                     return <div key={game.id} 
                             className="game-card modal-game-card"
-                            style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            style={
+                                game.gameSingle.background_image
+                                ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                                : {
+                                    backgroundImage: `url(${imageOff})`,
+                                    backgroundSize: "100px"
+                                }
+                            }
                         >
                         <div className="game-card-options-row">
                         <p className="game-title">{game.gameSingle.name}</p>

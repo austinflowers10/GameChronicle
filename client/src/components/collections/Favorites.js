@@ -9,7 +9,7 @@ import { DemoteFavoriteModal } from "./DemoteFavoriteModal";
 import { useNavigate } from "react-router-dom";
 import { AddTopTenModal } from "./AddTopTenModal";
 import { AddNewFavoriteModal } from "./AddNewFavorite";
-
+import imageOff from "../../images/image-off.svg"
 
 export const Favorites = ({ userGames, setUserGames }) => {
     const navigate = useNavigate()
@@ -51,7 +51,14 @@ export const Favorites = ({ userGames, setUserGames }) => {
                     .map(game => {
                     return <div key={game.id} 
                     className="game-card"
-                    style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                    style={
+                        game.gameSingle.background_image
+                        ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                        : {
+                            backgroundImage: `url(${imageOff})`,
+                            backgroundSize: "100px"
+                        }
+                    }
                     >
                 <p className="favorite-rank">{game.favoriteRanking}</p>
                 <div className="game-card-options-row">
@@ -103,7 +110,14 @@ export const Favorites = ({ userGames, setUserGames }) => {
                     .map(game => {
                     return <div key={game.id} 
                     className="game-card"
-                    style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                    style={
+                        game.gameSingle.background_image
+                        ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                        : {
+                            backgroundImage: `url(${imageOff})`,
+                            backgroundSize: "100px"
+                        }
+                    }
                     >
                         
                     <div className="game-card-options-row">

@@ -6,6 +6,8 @@ import { getTimeCategories } from "../../managers/timeCategoryManager"
 import { AddFromHistoryModal } from "./AddFromHistoryModal";
 import { Button, Spinner } from "reactstrap";
 import { useNavigate } from "react-router-dom";
+import imageOff from "../../images/image-off.svg"
+
 
 export const Home = ({ userGames, setUserGames }) => {
     const [timeCategories, setTimeCategories] = useState()
