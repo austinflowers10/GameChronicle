@@ -3,6 +3,7 @@ import { putUserGame } from "../../managers/userGameManager";
 import { useState, useEffect } from "react"
 import { MoveToHistoryModal } from "./MoveToHistoryModal";
 import { HomeGameDetailsModal } from "./HomeGameDetailsModal";
+import imageOff from "../../images/image-off.svg"
 
 export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCategoryOnGame}) => {
     const [sortedUserGames, setSortedUserGames] = useState()
@@ -31,7 +32,14 @@ export const GamesRowByTime = ({userGames, setUserGames, timeCategory, updateCat
                 sortedUserGames.map(game => {
                     return <div key={game.id} 
                             className="game-card"
-                            style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            style={
+                                game.gameSingle.background_image
+                                ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                                : {
+                                    backgroundImage: `url(${imageOff})`,
+                                    backgroundSize: "100px"
+                                }
+                            }
                             >
                         <div className="game-card-options-row">
                         <p className="game-title other">{game.gameSingle.name}</p>

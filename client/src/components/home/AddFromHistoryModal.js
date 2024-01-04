@@ -2,6 +2,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button, UncontrolledCollaps
 import { putUserGame } from "../../managers/userGameManager";
 import { useNavigate } from "react-router-dom";
 import { BiX } from "react-icons/bi";
+import imageOff from "../../images/image-off.svg"
 
 export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, updateCategoryOnGame}) => {
     const navigate = useNavigate()
@@ -31,7 +32,14 @@ export const AddFromHistoryModal = ({modal, toggle, userGames, timeCategories, u
                     
                     return <div key={game.id} 
                                 className="game-card modal-game-card"
-                                style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                                style={
+                                    game.gameSingle.background_image
+                                    ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                                    : {
+                                        backgroundImage: `url(${imageOff})`,
+                                        backgroundSize: "100px"
+                                    }
+                                }
                         >
                         <div className="game-card-options-row">
                         <p className="game-title">{game.gameSingle.name}</p>

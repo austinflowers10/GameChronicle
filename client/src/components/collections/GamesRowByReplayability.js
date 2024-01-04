@@ -2,6 +2,8 @@ import { BiChevronUp, BiChevronDown, BiX } from "react-icons/bi";
 import { putUserGame } from "../../managers/userGameManager";
 import { useState, useEffect } from "react"
 import { RemoveReplayableModal } from "./RemoveReplayableModal";
+import imageOff from "../../images/image-off.svg"
+
 
 export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityOnGame}) => {
     const [sortedUserGames, setSortedUserGames] = useState()
@@ -30,7 +32,14 @@ export const GamesRowByReplayability = ({userGames, rating, updateReplayabilityO
                 sortedUserGames.map(game => {
                     return <div key={game.id} 
                             className="game-card"
-                            style={{backgroundImage : `url(${game.gameSingle.background_image})`}}
+                            style={
+                                game.gameSingle.background_image
+                                ? {backgroundImage: `url(${game.gameSingle.background_image})`}
+                                : {
+                                    backgroundImage: `url(${imageOff})`,
+                                    backgroundSize: "100px"
+                                }
+                            }
                             >
                         <div className="game-card-options-row">
                         <p className="game-title other">{game.gameSingle.name}</p>

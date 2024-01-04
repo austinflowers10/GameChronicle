@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import "./AddGames.css"
 import { Button, Spinner } from "reactstrap"
 import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
+import imageOff from "../../images/image-off.svg"
 import { SearchedGameDetailsModal } from "./SearchedGameDetailsModal";
 
 export const GamesSearchResults = ({pageNumber, setPageNumber, searchedGames, loggedInUser, setUserGames, userGames, handlePostUserGame}) => {
@@ -20,7 +21,14 @@ export const GamesSearchResults = ({pageNumber, setPageNumber, searchedGames, lo
             ? searchedGames.map(game => (
                 <div key={game.id} 
                             className="game-card"
-                            style={{backgroundImage : `url(${game.imageURL})`}}
+                            style={
+                                game.imageURL 
+                                ? {backgroundImage: `url(${game.imageURL})`}
+                                : {
+                                    backgroundImage: `url(${imageOff})`,
+                                    backgroundSize: "100px",
+                                }
+                            }
                             >
                         <div className="game-card-options-row">
                             <p className="game-title">{game.name}</p>
